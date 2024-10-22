@@ -20,8 +20,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+.logo{
+    margin-right: 5rem;
+}
 .logo>img{
     height: 8rem;
+    
 }
 
 body {
@@ -40,13 +44,19 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     margin: 2rem;
+}
+
+.nav-links{
+    margin-right: 5rem;
 }
 
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
     margin: 1rem;
+
 }
 
 .search input[type="search"] {
