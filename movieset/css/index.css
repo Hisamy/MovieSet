@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #333F62;
+    --secondary-color: #b45309;
+    --hero-color: #8C3A32;
+    --accent-color: #ffffff;
+    --text-color: #ffffff;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+header {
+    background: linear-gradient(to bottom, black, transparent);
+    padding: 4rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.nav-links input[type="search"] {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.polaroid {
+    background-color: white;
+    padding: 1rem;
+    transform: rotate(-5deg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text h1 {
+    font-size: 2rem;
+    max-width: 400px;
+    color: var(--hero-color);
+}
+
+.hero-text span {
+    color: var(--accent-color);
+}
+
+.movie-section {
+    margin: 2rem 0;
+}
+
+.movie-section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.movie-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-list {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+.movie-item img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.carousel-button.left {
+    left: 0;
+}
+
+.carousel-button.right {
+    right: 0;
+}
+
+.moviedle {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.search-container {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-container button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .movie-item img {
+        width: 120px;
+        height: 160px;
+    }
+}
