@@ -11,11 +11,17 @@
     --text-color: #ffffff;
     
 }
-
+@font-face {
+    font-family: 'BebasFont';
+    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.logo>img{
+    height: 8rem;
 }
 
 body {
@@ -32,29 +38,28 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--accent-color);
+    margin: 2rem;
 }
 
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 1rem;
+    margin: 1rem;
 }
 
-.nav-links input[type="search"] {
+.search input[type="search"] {
     background-color: var(--secondary-color);
     border: none;
     padding: 0.5rem;
     border-radius: 4px;
 }
-
+h1{
+    font-family: 'BebasFont', sans-serif;
+    text-align: center;
+    
+}
 .hero {
     display: flex;
     align-items: center;
@@ -64,10 +69,10 @@ nav {
 }
 
 .polaroid {
-    background-color: white;
-    padding: 1rem;
     transform: rotate(-5deg);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 40rem;
+    margin-right: 4rem;
+
 }
 
 .hero-text h1 {
