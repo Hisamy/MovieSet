@@ -1,9 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: 'BebasFont';
+    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'RoundsFont';
+    src: url("/movieset/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'HamFont';
+    src: url("/movieset/font/HamIsCute-Regular.otf")format("opentype");
+}
 
 :root {
     --primary-color: #333F62;
-    --secondary-color: #b45309;
+    --secondary-color: #c08444;
     --accent-color: #fbbf24;
+    --red-text-color: #8C3A32;
     --text-color: #ffffff;
     --input-bg: #334155;
     --green: #22c55e;
@@ -33,14 +46,20 @@ body {
 header {
     padding: 1rem;
     text-align: center;
+    height: 200px;
     background: linear-gradient(to bottom, #04060c 0%, rgba(12, 17, 33, 0.9) 40%, rgba(12, 17, 33, 0.5) 70%, transparent 100%);
 }
 
 h1 {
     font-size: 2.5rem;
-    color: var(--orange);
+    font-family: 'HamFont';
+    color: var(--red-text-color);
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin-top: 2rem;
+}
+h1 span{
+    color: var(--secondary-color);
 }
 
 main {
@@ -226,6 +245,7 @@ table {
 
 th, td {
     text-align: center;
+    font-family: 'BebasFont','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     padding: 0.75rem;
     border-radius: 4px;
 }

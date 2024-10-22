@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: 'BebasFont';
+    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'RoundsFont';
+    src: url("/movieset/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
+}
 
 :root {
     --primary-color: #333F62;
@@ -11,18 +18,12 @@
     --text-color: #ffffff;
     
 }
-@font-face {
-    font-family: 'BebasFont';
-    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
-}
-@font-face {
-    font-family: 'RoundsFont';
-    src: url("/movieset/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
-}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 .logo{
     margin-right: 5rem;
@@ -64,6 +65,10 @@ nav {
     text-decoration: none;
     margin: 1rem;
 
+}
+.nav-links a:hover{
+    color: var(--movies-section-color);
+    transition: color 0.3s ease;
 }
 
 .search input[type="search"] {
@@ -138,6 +143,8 @@ h1{
 
 .movie-list {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     gap: 1rem;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -145,22 +152,22 @@ h1{
 }
 
 .movie-item {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0px 1rem;
 }
 
 .movie-item img {
-    width: 150px;
-    height: 200px;
+    max-height: 249px;
+    max-width: 179px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .movie-item p {
     margin-top: 0.5rem;
-    font-family: 'BebasFont','Courier New', Courier, monospace;
+    font-family: 'RoundsFont','Courier New', Courier, monospace ;
     font-size: 1rem;
     color: var(--movie-title-color);
 }
