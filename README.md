@@ -12,4 +12,4 @@
 - Gael Rafael Castro Molina – 00000247887
 
 ## Enlace al diseño/prototipo
-_Aún no disponible._
+[Enlace lector figma](https://www.figma.com/design/A8iZWvj4F8m6Jh67rAJeag/Blog-peliculas?node-id=0-1&t=gxrRf4910UzYbNM0-1)
