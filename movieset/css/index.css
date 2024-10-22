@@ -2,9 +2,12 @@
 
 :root {
     --primary-color: #333F62;
-    --secondary-color: #b45309;
+    --secondary-color: #8C3A32;
     --hero-color: #8C3A32;
-    --accent-color: #ffffff;
+    --hero-accent-color: #ffffff;
+    --movies-section-color: #D9B855;
+    --carousel-color: #c08444;
+    --movie-title-color: #465EA6;
     --text-color: #ffffff;
     
 }
@@ -22,7 +25,8 @@ body {
 }
 
 header {
-    background: linear-gradient(to bottom, black, transparent);
+    height: 200px;
+    background: linear-gradient(to bottom, #04060c 0%, rgba(12, 17, 33, 0.9) 40%, rgba(12, 17, 33, 0.5) 70%, transparent 100%);
     padding: 4rem;
 }
 
@@ -73,21 +77,23 @@ nav {
 }
 
 .hero-text span {
-    color: var(--accent-color);
+    color: var(--hero-accent-color);
 }
 
 .movie-section {
-    margin: 2rem 0;
+    padding-top: 3rem;
+    background-color: var(--secondary-color);
 }
 
 .movie-section h2 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
+    color: var(--movies-section-color);
+    margin: 0 0 1rem 10rem;
 }
 
 .movie-carousel {
     position: relative;
     overflow: hidden;
+    background-color: var(--carousel-color);
 }
 
 .movie-list {
@@ -98,11 +104,24 @@ nav {
     padding: 1rem 0;
 }
 
+.movie-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .movie-item img {
     width: 150px;
     height: 200px;
     object-fit: cover;
     border-radius: 4px;
+}
+
+.movie-item p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--movie-title-color);
 }
 
 .carousel-button {
@@ -125,18 +144,6 @@ nav {
     right: 0;
 }
 
-.moviedle {
-    background-color: var(--secondary-color);
-    padding: 2rem;
-    border-radius: 8px;
-    margin-top: 2rem;
-}
-
-.search-container {
-    display: flex;
-    margin: 1rem 0;
-}
-
 .search-container input {
     flex-grow: 1;
     padding: 0.5rem;
@@ -145,7 +152,7 @@ nav {
 }
 
 .search-container button {
-    background-color: var(--accent-color);
+    background-color: var(--hero-accent-color);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
