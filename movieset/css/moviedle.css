@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @font-face {
     font-family: 'BebasFont';
-    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
+    src: url("/font/Bebas-Regular.otf") format("opentype");
 }
 @font-face {
     font-family: 'RoundsFont';
-    src: url("/movieset/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
+    src: url("/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
 }
 @font-face {
     font-family: 'HamFont';
-    src: url("/movieset/font/HamIsCute-Regular.otf")format("opentype");
+    src: url("/font/HamIsCute-Regular.otf")format("opentype");
 }
 
 :root {
