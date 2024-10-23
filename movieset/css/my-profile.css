@@ -1,0 +1,170 @@
+@font-face {
+    font-family: 'BebasFont';
+    src: url("/movieset/font/Bebas-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'RoundsFont';
+    src: url("/movieset/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
+}
+
+:root {
+    --body-background-color: #8C3A32;
+    --background-color: #333F62;
+    --text-color: #f6f6f6;
+    --profile-color: #D9B855;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'RoundsFont', Arial, sans-serif;
+}
+
+body {
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    color: var(--text-color);
+    font-size: 24px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: var(--profile-color);
+    font-family: 'BebasFont', sans-serif;
+}
+
+.profile-image {
+    width: 120px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    height: calc(100vh - 100px);
+    width: 92%;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.comment-section {
+    max-height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment {
+    background-color: #34495e;
+    padding: 20px;
+    min-height: 180px;
+    width: 70%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    gap: 15px;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+}
+
+.stars img {
+    width: 2em;
+    height: 2em;
+}
+
+.movie-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 100%;
+    overflow-y: scroll;
+    align-items: center;
+    padding-right: 20px;
+    margin-right: -20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.movie-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-poster {
+    width: 120px;
+    border-radius: 8px;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.comment-text {
+    font-size: 1.3em;
+}
+
+.comment-subtext {
+    color: #95a5a6;
+    font-size: 0.8em;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2c3e50;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #95a5a6;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer > a {
+    color: var(--text-button-color);
+    text-decoration: none;
+}
+
+footer > a:hover {
+    text-decoration: underline;
+}
