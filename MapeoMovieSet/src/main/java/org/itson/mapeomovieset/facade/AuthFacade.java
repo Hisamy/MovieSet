@@ -3,7 +3,7 @@ package org.itson.mapeomovieset.facade;
 import com.mongodb.gridfs.GridFS;
 import org.itson.mapeomovieset.daos.IUsuariosDAO;
 import org.itson.mapeomovieset.daos.UsuariosDAO;
-import org.itson.mapeomovieset.entidades.Usuario;
+import org.itson.mapeomovieset.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 import java.util.Date;
@@ -19,7 +19,7 @@ public class AuthFacade implements IAuthFacade {
     }
 
     @Override
-    public Usuario registrarUsuario(
+    public UsuarioEntity registrarUsuario(
             String nombre, 
             String correo, 
             String contrasenia, 
@@ -36,7 +36,7 @@ public class AuthFacade implements IAuthFacade {
         }
 
         // Crear un nuevo usuario
-        Usuario nuevoUsuario = new Usuario();
+        UsuarioEntity nuevoUsuario = new UsuarioEntity();
         nuevoUsuario.setNombre(nombre);
         nuevoUsuario.setCorreo(correo);
         nuevoUsuario.setContrasenia(contrasenia);
@@ -56,9 +56,9 @@ public class AuthFacade implements IAuthFacade {
     }
 
     @Override
-    public Usuario iniciarSesion(String correo, String contrasenia) {
+    public UsuarioEntity iniciarSesion(String correo, String contrasenia) {
         try {
-            Usuario usuario = usuariosDAO.buscarUsuarioPorCorreo(correo);
+            UsuarioEntity usuario = usuariosDAO.buscarUsuarioPorCorreo(correo);
             if (usuario != null && usuario.getContrasenia().equals(contrasenia)) {
                 return usuario;
             } else {

@@ -10,7 +10,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.Pelicula;
+import org.itson.mapeomovieset.entidades.PeliculaEntity;
 import org.itson.mapeomovieset.entidades.PostEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 

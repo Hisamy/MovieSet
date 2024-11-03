@@ -17,7 +17,7 @@ public class PostEntity {
     private ArrayList<ComentarioEntity> comentario;
     private Date fechaPublicacion;
     private Date fechaModificacion;
-    private Usuario autor;
+    private UsuarioEntity autor;
     private Float stars;     
     private boolean anclado;
 
@@ -46,11 +46,11 @@ public class PostEntity {
         this.fechaModificacion = fechaModificacion;
     }
     
-    public Usuario getAutor() {
+    public UsuarioEntity getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(UsuarioEntity autor) {
         this.autor = autor;
     }
 

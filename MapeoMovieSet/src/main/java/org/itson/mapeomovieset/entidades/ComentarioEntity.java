@@ -11,7 +11,7 @@ package org.itson.mapeomovieset.entidades;
 public class ComentarioEntity {
 
     private String contenido;
-    private Usuario autor;
+    private UsuarioEntity autor;
 
     public ComentarioEntity() {
         super();
@@ -25,11 +25,11 @@ public class ComentarioEntity {
         this.contenido = contenido;
     }
 
-    public Usuario getAutor() {
+    public UsuarioEntity getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(UsuarioEntity autor) {
         this.autor = autor;
     }
     

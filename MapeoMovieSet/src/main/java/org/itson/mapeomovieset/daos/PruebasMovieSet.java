@@ -3,7 +3,7 @@
  */
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.Usuario;
+import org.itson.mapeomovieset.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 import org.itson.mapeomovieset.facade.AuthFacade;
 
@@ -21,7 +21,7 @@ public class PruebasMovieSet {
 
         // Prueba de registro de usuario con datos validos
         try {
-            Usuario usuario = authFacade.registrarUsuario(
+            UsuarioEntity usuario = authFacade.registrarUsuario(
                     "Oli Inzunza",
                     "oli-finance@gmail.com",
                     "oliinzunza123",
@@ -39,7 +39,7 @@ public class PruebasMovieSet {
 
 //        // Prueba de inicio de sesion
 //        try {
-//            Usuario usuario = authFacade.iniciarSesion("hisamyfive@gmail.com", "hisamy123");
+//            UsuarioEntity usuario = authFacade.iniciarSesion("hisamyfive@gmail.com", "hisamy123");
 //            if (usuario != null) {
 //                System.out.println("Inicio de sesion exitoso: " + usuario.getNombreCompleto());
 //            }

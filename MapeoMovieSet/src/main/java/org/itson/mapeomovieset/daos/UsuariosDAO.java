@@ -8,22 +8,22 @@ import com.mongodb.client.result.InsertOneResult;
 import org.bson.types.ObjectId;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.Usuario;
+import org.itson.mapeomovieset.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 public class UsuariosDAO implements IUsuariosDAO {
 
     private IConexion conexion;
-    private MongoCollection<Usuario> usuarios;
+    private MongoCollection<UsuarioEntity> usuarios;
 
     public UsuariosDAO() {
         this.conexion = Conexion.getInstance();
         MongoDatabase baseDeDatos = conexion.conectar();
-        this.usuarios = baseDeDatos.getCollection("Usuarios", Usuario.class);
+        this.usuarios = baseDeDatos.getCollection("Usuarios", UsuarioEntity.class);
     }
 
     @Override
-    public boolean agregarUsuario(Usuario usuario) throws FindException {
+    public boolean agregarUsuario(UsuarioEntity usuario) throws FindException {
         try {
             InsertOneResult result = usuarios.insertOne(usuario);
             return result.wasAcknowledged();
@@ -33,7 +33,7 @@ public class UsuariosDAO implements IUsuariosDAO {
     }
 
     @Override
-    public Usuario buscarUsuarioPorCorreo(String correo) throws FindException {
+    public UsuarioEntity buscarUsuarioPorCorreo(String correo) throws FindException {
         try{
             return usuarios.find(Filters.eq("correo", correo)).first();
         } catch (MongoException ex) {

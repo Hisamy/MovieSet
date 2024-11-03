@@ -10,7 +10,7 @@ import java.time.Duration;
  *
  * @author castr
  */
-public class Pelicula {
+public class PeliculaEntity {
 
     private String movieName;
     private String directorName;
@@ -18,7 +18,7 @@ public class Pelicula {
     private double rating;
     private Duration duracion;  // Para almacenar horas y minutos
 
-    public Pelicula() {
+    public PeliculaEntity() {
         super();
     }
 

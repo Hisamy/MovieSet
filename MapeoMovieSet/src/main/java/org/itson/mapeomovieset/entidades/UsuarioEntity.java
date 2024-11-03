@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 import java.util.Date;
 
-public class Usuario {
+public class UsuarioEntity extends AdministradorEntity{
 
     private ObjectId id;
     private String nombre;
@@ -20,7 +20,7 @@ public class Usuario {
     private Date fechaNacimiento;
     private String genero;
 
-    public Usuario() {}
+    public UsuarioEntity() {}
 
     public String getGenero() {
         return genero;
