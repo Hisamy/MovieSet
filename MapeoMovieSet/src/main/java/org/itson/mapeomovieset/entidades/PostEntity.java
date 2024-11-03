@@ -4,28 +4,23 @@
  */
 package org.itson.mapeomovieset.entidades;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
-import org.bson.types.ObjectId;
+import java.util.List;
 
 /**
  *
  * @author castr
  */
-public abstract class Post {
-    protected String titulo;
-    protected String contenido;
-    protected Date fechaPublicacion;
-    protected Date fechaModificacion;
-    protected Usuario autor;
+public abstract class PostEntity {
+    private String contenido;
+    private ArrayList<ComentarioEntity> comentario;
+    private Date fechaPublicacion;
+    private Date fechaModificacion;
+    private Usuario autor;
+    private Float stars;     
+    private boolean anclado;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     public String getContenido() {
         return contenido;
@@ -58,5 +53,32 @@ public abstract class Post {
     public void setAutor(Usuario autor) {
         this.autor = autor;
     }
+
+    public List<ComentarioEntity> getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(ArrayList<ComentarioEntity> comentario) {
+        this.comentario = comentario;
+    }
+
+    public Float getStars() {
+        return stars;
+    }
+
+    public void setStars(Float stars) {
+        this.stars = stars;
+    }
+
+
+    public boolean isAnclado() {
+        return anclado;
+    }
+
+    public void setAnclado(boolean anclado) {
+        this.anclado = anclado;
+    }
  
+    
+    
 }

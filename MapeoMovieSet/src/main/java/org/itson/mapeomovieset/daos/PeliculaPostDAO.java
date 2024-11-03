@@ -10,7 +10,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.PeliculaPost;
+import org.itson.mapeomovieset.entidades.Pelicula;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**
@@ -20,16 +20,16 @@ import org.itson.mapeomovieset.excepciones.FindException;
 public class PeliculaPostDAO implements IPeliculaPostDAO {
 
     private IConexion conexion;
-    private MongoCollection<PeliculaPost> peliculas;
+    private MongoCollection<Pelicula> peliculas;
 
     public PeliculaPostDAO() {
         this.conexion = Conexion.getInstance();
         MongoDatabase baseDeDatos = conexion.conectar();
-        this.peliculas = baseDeDatos.getCollection("Peliculas", PeliculaPost.class);
+        this.peliculas = baseDeDatos.getCollection("Peliculas", Pelicula.class);
     }
 
     @Override
-    public boolean agregarPelicula(PeliculaPost pelicula) throws FindException {
+    public boolean agregarPelicula(Pelicula pelicula) throws FindException {
         try {
             InsertOneResult result = peliculas.insertOne(pelicula);
             return result.wasAcknowledged();

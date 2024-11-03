@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.Comentario;
+import org.itson.mapeomovieset.entidades.ComentarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**
@@ -13,6 +13,6 @@ import org.itson.mapeomovieset.excepciones.FindException;
  */
 public interface IComentarioDAO {
 
-    boolean agregarComentario(Comentario comentario) throws FindException;
+    boolean agregarComentario(ComentarioEntity comentario) throws FindException;
     
 }

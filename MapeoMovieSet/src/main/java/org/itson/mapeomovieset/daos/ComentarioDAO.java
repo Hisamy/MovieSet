@@ -10,7 +10,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.Comentario;
+import org.itson.mapeomovieset.entidades.ComentarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**
@@ -20,16 +20,16 @@ import org.itson.mapeomovieset.excepciones.FindException;
 public class ComentarioDAO implements IComentarioDAO {
 
     private IConexion conexion;
-    private MongoCollection<Comentario> comentarios;
+    private MongoCollection<ComentarioEntity> comentarios;
 
     public ComentarioDAO() {
         this.conexion = Conexion.getInstance();
         MongoDatabase baseDeDatos = conexion.conectar();
-        this.comentarios = baseDeDatos.getCollection("Comentarios", Comentario.class);
+        this.comentarios = baseDeDatos.getCollection("Comentarios", ComentarioEntity.class);
     }
 
     @Override
-    public boolean agregarComentario(Comentario comentario) throws FindException {
+    public boolean agregarComentario(ComentarioEntity comentario) throws FindException {
         try {
             InsertOneResult result = comentarios.insertOne(comentario);
             return result.wasAcknowledged();

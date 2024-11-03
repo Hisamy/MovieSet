@@ -1,5 +1,6 @@
 package org.itson.mapeomovieset.facade;
 
+import com.mongodb.gridfs.GridFS;
 import org.itson.mapeomovieset.daos.IUsuariosDAO;
 import org.itson.mapeomovieset.daos.UsuariosDAO;
 import org.itson.mapeomovieset.entidades.Usuario;
@@ -18,7 +19,15 @@ public class AuthFacade implements IAuthFacade {
     }
 
     @Override
-    public Usuario registrarUsuario(String nombre, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero) {
+    public Usuario registrarUsuario(
+            String nombre, 
+            String correo, 
+            String contrasenia, 
+            String telefono, 
+            GridFS avatar, 
+            String ciudad, 
+            Date fechaNacimiento, 
+            String genero) {
         // Validar los datos de registro
         validarDatosRegistro(nombre, correo, contrasenia);
 

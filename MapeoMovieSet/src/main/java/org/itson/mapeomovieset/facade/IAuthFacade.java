@@ -1,5 +1,6 @@
 package org.itson.mapeomovieset.facade;
 
+import com.mongodb.gridfs.GridFS;
 import org.itson.mapeomovieset.entidades.Usuario;
 
 import java.util.Date;
@@ -17,7 +18,15 @@ public interface IAuthFacade {
      * @param contrasenia Contraseña del usuario
      * @return Usuario registrado
      */
-    Usuario registrarUsuario(String nombre, String correo, String contrasenia, String telefono, String avatar, String ciudad, Date fechaNacimiento, String genero);
+    Usuario registrarUsuario(
+            String nombre, 
+            String correo, 
+            String contrasenia, 
+            String telefono, 
+            GridFS avatar, 
+            String ciudad, 
+            Date fechaNacimiento, 
+            String genero);
 
     /**
      * Realiza el inicio de sesión de un usuario.

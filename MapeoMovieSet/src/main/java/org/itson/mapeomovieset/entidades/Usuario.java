@@ -1,5 +1,6 @@
 package org.itson.mapeomovieset.entidades;
 
+import com.mongodb.gridfs.GridFS;
 import org.bson.types.ObjectId;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ public class Usuario {
     private String correo;
     private String contrasenia;
     private String telefono;
-    private String avatar;
+    private GridFS avatar;
     private String ciudad;
     private Date fechaNacimiento;
     private String genero;
@@ -42,11 +43,11 @@ public class Usuario {
         this.ciudad = ciudad;
     }
 
-    public String getAvatar() {
+    public GridFS getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(GridFS avatar) {
         this.avatar = avatar;
     }
 

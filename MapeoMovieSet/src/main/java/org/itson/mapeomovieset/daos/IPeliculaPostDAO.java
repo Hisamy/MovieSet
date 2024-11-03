@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.PeliculaPost;
+import org.itson.mapeomovieset.entidades.Pelicula;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**
@@ -13,5 +13,5 @@ import org.itson.mapeomovieset.excepciones.FindException;
  */
 public interface IPeliculaPostDAO {
 
-    boolean agregarPelicula(PeliculaPost pelicula) throws FindException;
+    boolean agregarPelicula(Pelicula pelicula) throws FindException;
 }
