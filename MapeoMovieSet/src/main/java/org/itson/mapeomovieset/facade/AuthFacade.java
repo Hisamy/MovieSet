@@ -24,7 +24,6 @@ public class AuthFacade implements IAuthFacade {
             String correo, 
             String contrasenia, 
             String telefono, 
-            GridFS avatar, 
             String ciudad, 
             Date fechaNacimiento, 
             String genero) {
@@ -38,11 +37,10 @@ public class AuthFacade implements IAuthFacade {
 
         // Crear un nuevo usuario
         Usuario nuevoUsuario = new Usuario();
-        nuevoUsuario.setNombreCompleto(nombre);
+        nuevoUsuario.setNombre(nombre);
         nuevoUsuario.setCorreo(correo);
         nuevoUsuario.setContrasenia(contrasenia);
         nuevoUsuario.setTelefono(telefono);
-        nuevoUsuario.setAvatar(avatar);
         nuevoUsuario.setCiudad(ciudad);
         nuevoUsuario.setFechaNacimiento(fechaNacimiento);
         nuevoUsuario.setGenero(genero);

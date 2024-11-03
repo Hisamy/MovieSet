@@ -11,7 +11,7 @@ import org.itson.mapeomovieset.excepciones.FindException;
  *
  * @author castr
  */
-public interface IPeliculaPostDAO {
+public interface IPeliculaDAO {
 
     boolean agregarPelicula(Pelicula pelicula) throws FindException;
 }

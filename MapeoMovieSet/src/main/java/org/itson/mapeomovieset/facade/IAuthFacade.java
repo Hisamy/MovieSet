@@ -23,7 +23,6 @@ public interface IAuthFacade {
             String correo, 
             String contrasenia, 
             String telefono, 
-            GridFS avatar, 
             String ciudad, 
             Date fechaNacimiento, 
             String genero);

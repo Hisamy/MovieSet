@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author castr
  */
-public abstract class PostEntity {
+public class PostEntity {
     private String contenido;
     private ArrayList<ComentarioEntity> comentario;
     private Date fechaPublicacion;

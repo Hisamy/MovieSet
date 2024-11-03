@@ -10,32 +10,31 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.Pelicula;
+import org.itson.mapeomovieset.entidades.ComentarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**
  *
  * @author castr
  */
-public class PeliculaPostDAO implements IPeliculaPostDAO {
+public class ComentariosDAO implements IComentariosDAO {
 
     private IConexion conexion;
-    private MongoCollection<Pelicula> peliculas;
+    private MongoCollection<ComentarioEntity> comentarios;
 
-    public PeliculaPostDAO() {
+    public ComentariosDAO() {
         this.conexion = Conexion.getInstance();
         MongoDatabase baseDeDatos = conexion.conectar();
-        this.peliculas = baseDeDatos.getCollection("Peliculas", Pelicula.class);
+        this.comentarios = baseDeDatos.getCollection("Comentarios", ComentarioEntity.class);
     }
 
     @Override
-    public boolean agregarPelicula(Pelicula pelicula) throws FindException {
+    public boolean agregarComentario(ComentarioEntity comentario) throws FindException {
         try {
-            InsertOneResult result = peliculas.insertOne(pelicula);
+            InsertOneResult result = comentarios.insertOne(comentario);
             return result.wasAcknowledged();
         } catch (MongoException ex) {
-            throw new FindException("Error al crear la pelicula");
+            throw new FindException("Error al crear el comentario");
         }
     }
-
 }

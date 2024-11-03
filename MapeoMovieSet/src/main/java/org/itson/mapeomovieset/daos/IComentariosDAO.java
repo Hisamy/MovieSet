@@ -11,7 +11,7 @@ import org.itson.mapeomovieset.excepciones.FindException;
  *
  * @author castr
  */
-public interface IComentarioDAO {
+public interface IComentariosDAO {
 
     boolean agregarComentario(ComentarioEntity comentario) throws FindException;
     

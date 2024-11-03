@@ -8,7 +8,10 @@ import java.util.Date;
 public class Usuario {
 
     private ObjectId id;
-    private String nombreCompleto;
+    private String nombre;
+    private String segundoNombre;
+    private String apellidoMaterno;
+    private String apellidoPaterno;
     private String correo;
     private String contrasenia;
     private String telefono;
@@ -75,14 +78,39 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
+    public String getSegundoNombre() {
+        return segundoNombre;
+    }
+
+    public void setSegundoNombre(String segundoNombre) {
+        this.segundoNombre = segundoNombre;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    
     public ObjectId getId() {
         return id;
     }
@@ -93,16 +121,22 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuarios{" +
-                "id=" + id +
-                ", nombreCompleto='" + nombreCompleto + '\'' +
-                ", correo='" + correo + '\'' +
-                ", contrasenia='" + contrasenia + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", ciudad='" + ciudad + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", genero='" + genero + '\'' +
-                '}';
+        return "Usuario{"
+                + "" 
+                + "id=" + id 
+                + ", nombre=" + nombre 
+                + ", segundoNombre=" + segundoNombre 
+                + ", apellidoMaterno=" + apellidoMaterno 
+                + ", apellidoPaterno=" + apellidoPaterno 
+                + ", correo=" + correo 
+                + ", contrasenia=" + contrasenia 
+                + ", telefono=" + telefono 
+                + ", avatar=" + avatar 
+                + ", ciudad=" + ciudad 
+                + ", fechaNacimiento=" + fechaNacimiento 
+                + ", genero=" + genero 
+                + '}';
     }
+
+    
 }
