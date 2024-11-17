@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 import java.util.Date;
 
-public class UsuarioEntity extends AdministradorEntity{
+public class UsuarioEntity{
 
     private ObjectId id;
     private String nombre;

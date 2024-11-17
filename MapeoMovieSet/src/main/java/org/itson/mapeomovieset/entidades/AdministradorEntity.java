@@ -8,6 +8,6 @@ package org.itson.mapeomovieset.entidades;
  *
  * @author hisam
  */
-public class AdministradorEntity {
+public class AdministradorEntity extends UsuarioEntity{
     
 }
