@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #2c3e50, #3a506b);
+    padding: 20px;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    color: white;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    color: #a8b2c1;
+    margin-bottom: 2rem;
+  }
+  
+  .signup-form {
+    background: rgba(20, 30, 48, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #a8b2c1;
+    font-size: 0.95rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 25px;
+    background: #e9ecef;
+    font-size: 1rem;
+  }
+  
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffd700;
+  }
+  
+  .create-account-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: #963d3d;
+    color: #ffd700;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .create-account-btn:hover {
+    background: #7a3131;
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 15px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .signup-form {
+      padding: 1.5rem;
+    }
+  
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
