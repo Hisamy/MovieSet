@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'BebasFont';
+    src: url("/font/Bebas-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'RoundsFont';
+    src: url("/font/TT\ Rounds\ Neue\ Trial\ Medium.ttf") format("truetype");
+}
+
+:root {
+    --primary-color: #333F62;
+    --secondary-color: #8C3A32;
+    --hero-color: #8C3A32;
+    --hero-accent-color: #ffffff;
+    --movies-section-color: #D9B855;
+    --carousel-color: #c08444;
+    --movie-title-color: #465EA6;
+    --text-color: #ffffff;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.logo{
+    margin-right: 5rem;
+}
+.logo>img{
+    height: 8rem;
+    
+}
+
+body {
+    font-family: 'BebasFont';
+    background-color: var(--primary-color);
+    color: var(--text-color);
+
+}
+
+header {
+    height: 200px;
+    background: linear-gradient(to bottom, #04060c 0%, rgba(12, 17, 33, 0.9) 40%, rgba(12, 17, 33, 0.5) 70%, transparent 100%);
+    padding: 2rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2rem;
+}
+
+.nav-links{
+    margin-right: 5rem;
+    font-size: 1rem;
+    font-family:'RoundsFont','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 1rem;
+
+}
+.nav-links a:hover{
+    color: var(--movies-section-color);
+    transition: color 0.3s ease;
+}
+
+.search input[type="search"] {
+    background-color: rgba(217, 184, 85, 0.5);
+    border: none;
+    padding: 0.5rem;
+    height: 2.5rem;
+    width: auto;
+    border-radius: 50px;
+    color: var(--text-color);
+}
+.search{
+    position: relative;
+}
+.search img{
+    position: absolute;
+    top: 10%;
+    right: 3%;
+    height: 2rem;
+    pointer-events: none;
+   
+}
+h1{
+    font-family: 'BebasFont', sans-serif;
+    text-align: center;
+    font-size: 3rem;
+    max-width: 460px;
+    color: var(--hero-color);
+    
+}
+
+.hero>img{
+    height: 25rem;
+    width: auto;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    margin-bottom: 6rem;
+    gap: 2rem;
+}
+
+.polaroid {
+    transform: rotate(-5deg);
+    width: 40rem;
+    margin-right: 4rem;
+
+}
+
+
+.hero-text span {
+    color: var(--hero-accent-color);
+}
+
+.movie-section {
+    padding-top: 3rem;
+    background-color: var(--secondary-color);
+}
+
+.movie-section h2 {
+    color: var(--movies-section-color);
+    margin: 0 0 1rem 10rem;
+}
+
+.movie-carousel {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--carousel-color);
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+}
+
+.movie-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 1rem;
+}
+
+.movie-item img {
+    max-height: 249px;
+    max-width: 179px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.movie-list a{
+    text-align: center;
+    text-decoration: none;
+
+}
+.movie-item p {
+    margin-top: 0.5rem;
+    font-family: 'RoundsFont','Courier New', Courier, monospace ;
+    font-size: 1rem;
+    color: var(--movie-title-color);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.carousel-button.left {
+    left: 0;
+}
+
+.carousel-button.right {
+    right: 0;
+}
+
+.search-container input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-container button {
+    background-color: var(--hero-accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .movie-item img {
+        width: 120px;
+        height: 160px;
+    }
+}
