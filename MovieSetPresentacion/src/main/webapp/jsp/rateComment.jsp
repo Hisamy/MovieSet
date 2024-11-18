@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
 </head>
 <body> 
-    <%@ include file="header.jsp" %>
+    <jsp:include page="header.jsp" />
     <div class="content">
         <aside>
             <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/249/2024/09/16145201/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK-scaled.jpg" alt="Fight Club">
