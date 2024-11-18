@@ -8,26 +8,9 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
 </head>
-<header>
-    <nav>
-        <div class="logo">
-            <img src="../images/Movieset.png" alt="logo-movieset">
-        </div>
-        <div class="nav-links">
-            <a href="sign-in.html">Sign in</a>
-            <a href="create-account.html">Create account</a>
-            <a href="#films">Films</a>
-            <a href="movidle.html">Moviedle</a>
-            
-        </div>
-        <div class="search">
-            <img src="../images/Search.png" alt="search">
-            <input type="search">
-        </div>
-    </nav>
-</header>
-
+  
 <body>
+    <%@ include file="header.jsp" %>
     <main>
         <section class="hero">
             <img src="../images/a-trip-to-the-moon.png" alt="A trip to the moon" class="polaroid">

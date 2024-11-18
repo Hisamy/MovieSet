@@ -7,25 +7,8 @@
     <link rel="stylesheet" href="../css/rate-comment.css">
     <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
 </head>
-<header>
-    <nav>
-        <div class="logo">
-            <img src="../images/Movieset.png" alt="logo-movieset">
-        </div>
-        <div class="nav-links">
-            <a href="sign-in.html">Sign in</a>
-            <a href="create-account.html">Create account</a>
-            <a href="index.html#films">Films</a>
-            <a href="movidle.html">Moviedle</a>
-            
-        </div>
-        <div class="search">
-            <img src="../images/Search.png" alt="search">
-            <input type="search">
-        </div>
-    </nav>
-</header>
 <body> 
+    <%@ include file="header.jsp" %>
     <div class="content">
         <aside>
             <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/249/2024/09/16145201/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK-scaled.jpg" alt="Fight Club">
@@ -41,7 +24,7 @@
                 <div class="title">
                     <h1>Fight Club</h1>
                     <p>directed by</p>
-                    <h3>David Fincher<h3>
+                    <h3>David Fincher <h3>
                 </div>
                 <ul class="presentation">
                     <li>2010</li>
