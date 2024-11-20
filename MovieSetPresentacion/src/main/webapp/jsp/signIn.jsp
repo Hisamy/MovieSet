@@ -30,7 +30,8 @@
           <div class="divider">
             <span>Or</span>
           </div>
-          <a class="create-account-btn" href="create-account.html">
+         
+          <a class="create-account-btn" href="createAccount.jsp">
             CREATE ACCOUNT
           </a>
         </div>
