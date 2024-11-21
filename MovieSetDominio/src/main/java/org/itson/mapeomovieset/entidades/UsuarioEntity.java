@@ -1,11 +1,10 @@
 package org.itson.mapeomovieset.entidades;
 
-import com.mongodb.gridfs.GridFS;
+import com.mongodb.casbah.gridfs.GridFS;
+import java.util.Date;
 import org.bson.types.ObjectId;
 
-import java.util.Date;
-
-public class UsuarioEntity{
+public class UsuarioEntity {
 
     private ObjectId id;
     private String nombre;
@@ -20,7 +19,8 @@ public class UsuarioEntity{
     private Date fechaNacimiento;
     private String genero;
 
-    public UsuarioEntity() {}
+    public UsuarioEntity() {
+    }
 
     public String getGenero() {
         return genero;
@@ -110,7 +110,6 @@ public class UsuarioEntity{
         this.apellidoPaterno = apellidoPaterno;
     }
 
-    
     public ObjectId getId() {
         return id;
     }
@@ -122,21 +121,20 @@ public class UsuarioEntity{
     @Override
     public String toString() {
         return "Usuario{"
-                + "" 
-                + "id=" + id 
-                + ", nombre=" + nombre 
-                + ", segundoNombre=" + segundoNombre 
-                + ", apellidoMaterno=" + apellidoMaterno 
-                + ", apellidoPaterno=" + apellidoPaterno 
-                + ", correo=" + correo 
-                + ", contrasenia=" + contrasenia 
-                + ", telefono=" + telefono 
-                + ", avatar=" + avatar 
-                + ", ciudad=" + ciudad 
-                + ", fechaNacimiento=" + fechaNacimiento 
-                + ", genero=" + genero 
+                + ""
+                + "id=" + id
+                + ", nombre=" + nombre
+                + ", segundoNombre=" + segundoNombre
+                + ", apellidoMaterno=" + apellidoMaterno
+                + ", apellidoPaterno=" + apellidoPaterno
+                + ", correo=" + correo
+                + ", contrasenia=" + contrasenia
+                + ", telefono=" + telefono
+                + ", avatar=" + avatar
+                + ", ciudad=" + ciudad
+                + ", fechaNacimiento=" + fechaNacimiento
+                + ", genero=" + genero
                 + '}';
     }
 
-    
 }
