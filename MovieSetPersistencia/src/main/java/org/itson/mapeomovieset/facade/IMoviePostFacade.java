@@ -4,11 +4,13 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import org.itson.moviesetdto.PeliculaDTO;
+
 /**
  *
  * @author castr
  */
 public interface IMoviePostFacade {
-    
-    public boolean agregarPelicula(PeliculaDTO);
+
+    public boolean agregarPelicula(PeliculaDTO peliculaDTO);
 }

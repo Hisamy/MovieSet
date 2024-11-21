@@ -8,6 +8,6 @@ package org.itson.mapeomovieset.facade;
  *
  * @author castr
  */
-public interface IPostFacade {
+public interface ICommentPostFacade {
     
 }

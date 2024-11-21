@@ -29,6 +29,11 @@
             <artifactId>MovieSetDominio</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>MovieSetDTO</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <name>MovieSetPersistencia</name>
 </project>

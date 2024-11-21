@@ -5,6 +5,7 @@
 package org.itson.mapeomovieset.facade;
 
 import org.itson.mapeomovieset.daos.PeliculaDAO;
+import org.itson.moviesetdto.PeliculaDTO;
 
 /**
  *
@@ -15,8 +16,9 @@ public class MoviePostFacade implements IMoviePostFacade {
     private PeliculaDAO peliculaDAO;
 
     @Override
-    public boolean agregarPelicula() {
-        peliculaDAO.agregarPelicula();
+    public boolean agregarPelicula(PeliculaDTO pelicula) {
+//        peliculaDAO.agregarPelicula();
+        return false;
     }
 
 }
