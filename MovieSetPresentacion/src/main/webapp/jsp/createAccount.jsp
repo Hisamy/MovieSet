@@ -7,8 +7,16 @@
         <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
         <link rel="stylesheet" href="../css/create-account.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
     <body>
+        <c:if test="${showSuccessAlert}">
+            <script>
+                Swal.fire({
+                    title: "${alertTitle}",
+                    text: "${alertText}",
+                    icon: "success"
+                });
+            </script>
+        </c:if>
         <div class="container">
             <h1>JOIN THE COMMUNITY</h1>
             <p class="subtitle">Welcome to Movieset, create your account</p>

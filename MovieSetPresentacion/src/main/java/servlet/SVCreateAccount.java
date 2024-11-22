@@ -57,12 +57,13 @@ public class SVCreateAccount extends HttpServlet {
             saveImage(filePart);
 
             if (password.equals(repeatPassword)) {
-
-                success(request, response);
+                successAlert(request, response);
             } else {
-                request.setAttribute("message", "Passwords doesn't match");
-                request.getRequestDispatcher("error.jsp").forward(request, response);
+                request.setAttribute("message", "Passwords don't match");
+                request.getRequestDispatcher("create-account.jsp").forward(request, response);
             }
+            
+            
         } catch (RuntimeException e) {
             request.setAttribute("message", "Error: " + e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
@@ -70,19 +71,16 @@ public class SVCreateAccount extends HttpServlet {
 
     }
 
-    private void success(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute(
-                "h1", 
-                "Welcome!");
-        request.setAttribute(
-                "p", 
-                "Now it’s your turn to rate all the movies you want! Go ahead, be the ultimate movie critic!");
-        request.getRequestDispatcher(
-                "success.jsp").forward(
-                        request, 
-                        response);
-
+    private void successAlert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Establece atributos para mostrar el alert
+        request.setAttribute("showSuccessAlert", true);
+        request.setAttribute("alertTitle", "Welcome!");
+        request.setAttribute("alertText", "Now it’s your turn to rate all the movies you want! Go ahead, be the ultimate movie critic!");
+        
+        // Redirige de vuelta al mismo JSP del formulario
+        request.getRequestDispatcher("create-account.jsp").forward(request, response);
     }
+    
 
     /**
      * Guarda un archivo de imagen en el servidor en un directorio designado.
