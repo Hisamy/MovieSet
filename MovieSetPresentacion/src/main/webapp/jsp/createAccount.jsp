@@ -6,6 +6,7 @@
         <title>Create account</title>
         <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
         <link rel="stylesheet" href="../css/create-account.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <div class="container">
