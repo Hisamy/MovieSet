@@ -6,11 +6,15 @@
     </filter>
     <filter-mapping>
         <filter-name>FiltroAutenticacion</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/jsp/*</url-pattern>
     </filter-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!-- Página de inicio -->
+    <welcome-file-list>
+        <welcome-file>jsp/signIn.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
