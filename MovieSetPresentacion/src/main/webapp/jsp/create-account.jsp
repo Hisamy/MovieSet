@@ -1,26 +1,35 @@
+<%-- 
+    Document   : create-account
+    Created on : Nov 21, 2024, 9:34:24 PM
+    Author     : hisam
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create account</title>
         <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
         <link rel="stylesheet" href="../css/create-account.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </head>
     <body>
-        <c:if test="${showSuccessAlert}">
-            <script>
-                Swal.fire({
-                    title: "${alertTitle}",
-                    text: "${alertText}",
-                    icon: "success"
-                });
-            </script>
-        </c:if>
+       <!-- <c:if test="${showSuccessAlert}">
+           <script>
+               Swal.fire({
+                   title: "${alertTitle}",
+                   text: "${alertText}",
+                   icon: "success"
+               });
+           </script>
+       </c:if> -->
+
         <div class="container">
             <h1>JOIN THE COMMUNITY</h1>
             <p class="subtitle">Welcome to Movieset, create your account</p>
-            <form class="signup-form" action="/CreateAccount" method="POST">
+            <form class="signup-form" action="SVCreateAccount" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>

@@ -22,7 +22,7 @@ import java.io.IOException;
         maxRequestSize = 1024 * 1024 * 50 // 50MB
 )
 
-@WebServlet("/CreateAccount")
+@WebServlet(name = "SVCreateAccount", urlPatterns = {"/CreateAccount"})
 public class SVCreateAccount extends HttpServlet {
 
     /**
@@ -51,23 +51,28 @@ public class SVCreateAccount extends HttpServlet {
                 "password");
         String repeatPassword = request.getParameter(
                 "repeat-password");
-        Part filePart = request.getPart(
-                "avatar");
-        try {
-            saveImage(filePart);
-
-            if (password.equals(repeatPassword)) {
-                successAlert(request, response);
-            } else {
-                request.setAttribute("message", "Passwords don't match");
-                request.getRequestDispatcher("create-account.jsp").forward(request, response);
-            }
-            
-            
-        } catch (RuntimeException e) {
-            request.setAttribute("message", "Error: " + e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
-        }
+//        Part filePart = request.getPart(
+//                "avatar");
+        System.out.println("Username: "+username);
+        System.out.println("Email: "+username);
+        System.out.println("Password: "+username);
+        System.out.println("RepeatPassword: "+username);
+        
+//        try {
+//            saveImage(filePart);
+//
+//            if (password.equals(repeatPassword)) {
+//                successAlert(request, response);
+//            } else {
+//                request.setAttribute("message", "Passwords don't match");
+//                request.getRequestDispatcher("create-account.jsp").forward(request, response);
+//            }
+//            
+//            
+//        } catch (RuntimeException e) {
+//            request.setAttribute("message", "Error: " + e.getMessage());
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
 
     }
 
