@@ -4,13 +4,13 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import org.itson.mapeomovieset.entidades.PeliculaEntity;
+import org.itson.mapeomovieset.entidades.PostEntity;
 
 /**
  *
  * @author castr
  */
-public interface IMoviePostFacade {
+public interface IPostFacade {
 
-    public boolean agregarPelicula(PeliculaEntity pelicula);
+    public boolean agregarComentario(PostEntity postEntity);
 }

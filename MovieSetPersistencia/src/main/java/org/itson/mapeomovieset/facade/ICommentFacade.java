@@ -4,10 +4,13 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import org.itson.mapeomovieset.entidades.ComentarioEntity;
+
 /**
  *
  * @author castr
  */
-public interface ICommentPostFacade {
-    
+public interface ICommentFacade {
+
+    public boolean agregarComentario(ComentarioEntity comentario);
 }

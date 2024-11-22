@@ -1,0 +1,30 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.itson.mapeomovieset.facade;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.itson.mapeomovieset.daos.ComentariosDAO;
+import org.itson.mapeomovieset.entidades.ComentarioEntity;
+
+/**
+ *
+ * @author castr
+ */
+public class CommentFacade implements ICommentFacade {
+
+    private ComentariosDAO comentariosDAO;
+
+    @Override
+    public boolean agregarComentario(ComentarioEntity comentario) {
+        try {
+            return comentariosDAO.agregarComentario(comentario);
+        } catch (Exception ex) {
+            Logger.getLogger(CommentFacade.class.getName()).log(Level.SEVERE, "Error al agregar película", ex);
+            return false;
+        }
+    }
+
+}
