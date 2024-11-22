@@ -11,7 +11,7 @@
     <div class="container">
         <div class="left-panel">
           <h1>ENTER YOUR ACCOUNT</h1>
-          <form class="sign-in-form">
+          <form class="sign-in-form" method="POST">
             <div class="form-group">
               <label for="email">E-mail</label>
               <input type="email" id="email" required>
