@@ -1,4 +1,4 @@
-package org.itson.mapeomovieset.entidades;
+package org.itson.entidades;
 
 import com.mongodb.casbah.gridfs.GridFS;
 import java.util.Date;
