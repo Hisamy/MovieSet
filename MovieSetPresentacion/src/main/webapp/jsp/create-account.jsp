@@ -1,10 +1,5 @@
-<%-- 
-    Document   : create-account
-    Created on : Nov 21, 2024, 9:34:24 PM
-    Author     : hisam
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,20 +11,12 @@
 
     </head>
     <body>
-       <!-- <c:if test="${showSuccessAlert}">
-           <script>
-               Swal.fire({
-                   title: "${alertTitle}",
-                   text: "${alertText}",
-                   icon: "success"
-               });
-           </script>
-       </c:if> -->
+          
 
         <div class="container">
             <h1>JOIN THE COMMUNITY</h1>
             <p class="subtitle">Welcome to Movieset, create your account</p>
-            <form class="signup-form" action="SVCreateAccount" method="POST">
+            <form class="signup-form" action="${pageContext.request.contextPath}/SVCreateAccount" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
@@ -40,6 +27,9 @@
                     <input type="email" id="email" name="email" required>
                 </div>
 
+               
+
+               <!-- 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
@@ -49,11 +39,11 @@
                     <label for="repeat-password">Repeat password</label>
                     <input type="password" id="repeat-password" name="repeat-password" required>
                 </div>
-
-                <div class="form-group">
+               <div class="form-group">
                     <label for="avatar">Choose your avatar</label>
                     <input name="avatar" type="file" id="id" accept="image/png,image/jpeg">  
-                </div> 
+                </div>  -->
+                
                 <button type="submit" class="create-account-btn">CREATE ACCOUNT</button>
             </form>
         </div>
