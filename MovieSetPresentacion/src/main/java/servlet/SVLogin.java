@@ -20,6 +20,9 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class SVLogin extends HttpServlet {
 
+    private static final String VALID_EMAIL = "correo@prueba.com";
+    private static final String VALID_PASSWORD = "1234";
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,7 +35,14 @@ public class SVLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        // Si ya hay una sesión activa, redirigir a moviedle.jsp
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("email") != null) {//Falta logica por definir aqui todavia
+            response.sendRedirect(request.getContextPath() + "/moviedle.jsp");
+            return;
+        }
+        // Si no hay sesión, redirigir al login
+        response.sendRedirect(request.getContextPath() + "/signIn.jsp");
     }
 
     /**
@@ -48,18 +58,29 @@ public class SVLogin extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        System.out.println("Aqui estoy dentro");
 
-        //Esto NO se debe hacer
-        if ("correo@prueba.com".equals(email) && "1234".equals(password)) {
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("correo@prueba.com", email);
-            response.sendRedirect(request.getContextPath() + "/moviedle.jsp");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/moviedle.jsp?error=true");
+        System.out.println("Email recibido: " + request.getParameter("email"));
+        System.out.println("Password recibido: " + request.getParameter("password"));
+
+        // Validar que los campos no estén vacíos
+        if (email == null || password == null || email.isEmpty() || password.isEmpty()) {
+            response.sendRedirect(request.getContextPath() + "/jsp/signIn.jsp?error=empty");
+            return;
         }
 
+        // Verificar las credenciales
+        if (VALID_EMAIL.equals(email) && VALID_PASSWORD.equals(password)) {
+            // Crear sesión y guardar información del usuario
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);
+            session.setMaxInactiveInterval(5 * 60); // 5 minutos de timeout
+
+            // Redirigir al usuario a la página principal
+            response.sendRedirect(request.getContextPath() + "/jsp/index.jsp");
+        } else {
+            // Redirigir de vuelta al login con mensaje de error
+            response.sendRedirect(request.getContextPath() + "/jsp/signIn.jsp?error=invalid");
+        }
     }
 
     /**

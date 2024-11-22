@@ -24,14 +24,17 @@ import jakarta.servlet.http.HttpSession;
  */
 public class FiltroAutenticacion implements Filter {
 
-    //Por el momento esto era para analizar el tutoruial
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured.
     private FilterConfig filterConfig = null;
-    private static final String[] urlPublicas = {"createAccount.jsp", "signIn.jsp", "Login"};
+    private static final String[] urlPublicas = {
+        "/jsp/createAccount.jsp",
+        "/jsp/signIn.jsp",
+        "/Login"
+    };
 
     public FiltroAutenticacion() {
     }
@@ -92,14 +95,14 @@ public class FiltroAutenticacion implements Filter {
     //Verifica que exista una sesion activa y se encuentre un usuario auteficado
     private boolean isLogged(HttpServletRequest request) {
         HttpSession sesion = request.getSession(false);
-        boolean logged = (sesion != null && sesion.getAttribute("usuario") != null);
+        boolean logged = (sesion != null && sesion.getAttribute("email") != null);
         return logged;
     }
 
     //Verifica si la ruta a la que se quiere acceder es privata
     private boolean isURLPrivate(String ruta) {
         for (String url : urlPublicas) {
-            if (ruta.startsWith("/" + url)) {
+            if (ruta.equals(url)) {  // Cambiado a equals para comparación exacta
                 return false;
             }
         }
@@ -132,17 +135,18 @@ public class FiltroAutenticacion implements Filter {
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        
+
         String ruta = this.getRutaSolicitada(httpRequest);
         boolean urlPrivada = this.isURLPrivate(ruta);
         boolean logueado = this.isLogged(httpRequest);
-        
-        if(!logueado && urlPrivada){
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/signIn.jsp");
-        } else {
-            chain.doFilter(request, response);
+
+        if (!logueado && urlPrivada) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/signIn.jsp"); // Corregida la ruta
+            return; // Añadido return para evitar continuar la cadena
         }
         
+        chain.doFilter(request, response);
+
     }
 
     /**
