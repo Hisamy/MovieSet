@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.PeliculaEntity;
+import org.itson.entidades.PeliculaEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**

@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import org.itson.mapeomovieset.entidades.ComentarioEntity;
+import org.itson.entidades.ComentarioEntity;
 
 /**
  *

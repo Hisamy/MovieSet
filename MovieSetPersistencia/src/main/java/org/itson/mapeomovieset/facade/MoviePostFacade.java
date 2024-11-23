@@ -6,8 +6,8 @@ package org.itson.mapeomovieset.facade;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.itson.entidades.PeliculaEntity;
 import org.itson.mapeomovieset.daos.PeliculaDAO;
-import org.itson.mapeomovieset.entidades.PeliculaEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
 

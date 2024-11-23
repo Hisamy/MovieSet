@@ -6,8 +6,8 @@ package org.itson.mapeomovieset.facade;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.itson.entidades.ComentarioEntity;
 import org.itson.mapeomovieset.daos.ComentariosDAO;
-import org.itson.mapeomovieset.entidades.ComentarioEntity;
 
 /**
  *

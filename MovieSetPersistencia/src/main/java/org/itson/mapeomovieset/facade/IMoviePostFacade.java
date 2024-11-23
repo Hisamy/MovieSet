@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import org.itson.mapeomovieset.entidades.PeliculaEntity;
+import org.itson.entidades.PeliculaEntity;
 
 /**
  *

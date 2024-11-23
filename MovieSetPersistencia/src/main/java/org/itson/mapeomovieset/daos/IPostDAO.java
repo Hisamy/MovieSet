@@ -1,7 +1,7 @@
 
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.PostEntity;
+import org.itson.entidades.PostEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 /**

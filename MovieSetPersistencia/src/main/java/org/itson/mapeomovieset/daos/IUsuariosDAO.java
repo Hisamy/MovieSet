@@ -1,6 +1,6 @@
 package org.itson.mapeomovieset.daos;
 
-import org.itson.mapeomovieset.entidades.UsuarioEntity;
+import org.itson.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 

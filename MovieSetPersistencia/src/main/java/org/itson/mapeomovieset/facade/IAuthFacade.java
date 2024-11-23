@@ -1,9 +1,8 @@
 package org.itson.mapeomovieset.facade;
 
-import com.mongodb.gridfs.GridFS;
-import org.itson.mapeomovieset.entidades.UsuarioEntity;
 
 import java.util.Date;
+import org.itson.entidades.UsuarioEntity;
 
 /**
  * Interfaz que define las operaciones de autenticación y registro de usuarios.
@@ -19,7 +18,9 @@ public interface IAuthFacade {
      * @return UsuarioEntity registrado
      */
     UsuarioEntity registrarUsuario(
-            String nombre, 
+            String nombre,
+            String apellidoMaterno,
+            String apellidoPaterno,
             String correo, 
             String contrasenia, 
             String telefono, 

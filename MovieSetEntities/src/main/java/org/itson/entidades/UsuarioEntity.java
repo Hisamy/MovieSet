@@ -1,6 +1,5 @@
 package org.itson.entidades;
 
-import com.mongodb.casbah.gridfs.GridFS;
 import java.util.Date;
 import org.bson.types.ObjectId;
 
@@ -14,7 +13,7 @@ public class UsuarioEntity {
     private String correo;
     private String contrasenia;
     private String telefono;
-    private GridFS avatar;
+    private String avatar;
     private String ciudad;
     private Date fechaNacimiento;
     private String genero;
@@ -46,11 +45,11 @@ public class UsuarioEntity {
         this.ciudad = ciudad;
     }
 
-    public GridFS getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(GridFS avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 

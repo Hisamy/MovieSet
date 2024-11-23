@@ -1,14 +1,13 @@
 package org.itson.mapeomovieset.facade;
 
-import com.mongodb.gridfs.GridFS;
 import org.itson.mapeomovieset.daos.IUsuariosDAO;
 import org.itson.mapeomovieset.daos.UsuariosDAO;
-import org.itson.mapeomovieset.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.itson.entidades.UsuarioEntity;
 
 public class AuthFacade implements IAuthFacade {
 
@@ -20,7 +19,9 @@ public class AuthFacade implements IAuthFacade {
 
     @Override
     public UsuarioEntity registrarUsuario(
-            String nombre, 
+            String nombre,
+            String apellidoPaterno,
+            String apellidoMaterno,
             String correo, 
             String contrasenia, 
             String telefono, 
