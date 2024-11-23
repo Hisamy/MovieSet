@@ -27,9 +27,6 @@
                     <input type="email" id="email" name="email" required>
                 </div>
 
-               
-
-               <!-- 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
@@ -39,6 +36,7 @@
                     <label for="repeat-password">Repeat password</label>
                     <input type="password" id="repeat-password" name="repeat-password" required>
                 </div>
+                <!--
                <div class="form-group">
                     <label for="avatar">Choose your avatar</label>
                     <input name="avatar" type="file" id="id" accept="image/png,image/jpeg">  
