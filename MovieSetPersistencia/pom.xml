@@ -34,6 +34,11 @@
             <artifactId>MovieSetEntities</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>MovieSetDTOs</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <name>MovieSetPersistencia</name>
 </project>

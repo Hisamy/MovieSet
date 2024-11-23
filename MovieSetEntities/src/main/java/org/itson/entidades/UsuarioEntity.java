@@ -7,6 +7,7 @@ public class UsuarioEntity {
 
     private ObjectId id;
     private String nombre;
+    private String username;
     private String segundoNombre;
     private String apellidoMaterno;
     private String apellidoPaterno;
@@ -18,8 +19,16 @@ public class UsuarioEntity {
     private Date fechaNacimiento;
     private String genero;
 
+    public UsuarioEntity(String username, String correo, String contrasenia) {
+        this.username = username;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+    }
+
     public UsuarioEntity() {
     }
+
+    
 
     public String getGenero() {
         return genero;
@@ -117,6 +126,15 @@ public class UsuarioEntity {
         this.id = id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    
     @Override
     public String toString() {
         return "Usuario{"

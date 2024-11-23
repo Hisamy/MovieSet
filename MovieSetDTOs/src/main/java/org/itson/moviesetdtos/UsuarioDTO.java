@@ -11,8 +11,8 @@ package org.itson.moviesetdtos;
 public class UsuarioDTO {
 
     private String correo;
+    private String username;
     private String contrasenia;
-    private String avatar;
 
     public UsuarioDTO() {
     }
@@ -34,12 +34,12 @@ public class UsuarioDTO {
         this.contrasenia = contrasenia;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     
