@@ -6,9 +6,9 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.types.ObjectId;
+import org.itson.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.excepciones.FindException;
 
 public class UsuariosDAO implements IUsuariosDAO {
