@@ -4,6 +4,7 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 import org.itson.moviesetdtos.UsuarioDTO;
 
 /**
@@ -11,5 +12,5 @@ import org.itson.moviesetdtos.UsuarioDTO;
  * @author hisam
  */
 public interface ICreateAccountFacade {
-    void sendCreateAccountForm(UsuarioDTO usauarioDatos);
+    void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException;
 }

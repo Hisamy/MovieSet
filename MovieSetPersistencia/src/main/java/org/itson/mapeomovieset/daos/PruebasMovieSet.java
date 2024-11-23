@@ -4,7 +4,7 @@
 package org.itson.mapeomovieset.daos;
 
 import org.itson.mapeomovieset.excepciones.FindException;
-import org.itson.mapeomovieset.facade.AuthFacade;
+//import org.itson.mapeomovieset.facade.AuthFacade;
 
 import java.util.Date;
 import org.itson.entidades.UsuarioEntity;
@@ -17,7 +17,7 @@ public class PruebasMovieSet {
 
     public static void main(String[] args) throws FindException {
 
-        AuthFacade authFacade = new AuthFacade();
+//        AuthFacade authFacade = new AuthFacade();
 
 //        // Prueba de registro de usuario con datos validos
 //        try {
@@ -40,14 +40,14 @@ public class PruebasMovieSet {
       
 
 //        // Prueba de inicio de sesion
-        try {
-            UsuarioEntity usuario = authFacade.iniciarSesion("oli-finance@gmail.com", "oliinzunza123");
-            if (usuario != null) {
-                System.out.println("Inicio de sesion exitoso: " + usuario.getNombre());
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error en el inicio de sesion: " + e.getMessage());
-        }
+//        try {
+//            UsuarioEntity usuario = authFacade.iniciarSesion("oli-finance@gmail.com", "oliinzunza123");
+//            if (usuario != null) {
+//                System.out.println("Inicio de sesion exitoso: " + usuario.getNombre());
+//            }
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("Error en el inicio de sesion: " + e.getMessage());
+//        }
 
 
     }

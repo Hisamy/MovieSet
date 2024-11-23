@@ -4,6 +4,7 @@
  */
 package org.itson.mapeomovieset.conexion;
 
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
 /**

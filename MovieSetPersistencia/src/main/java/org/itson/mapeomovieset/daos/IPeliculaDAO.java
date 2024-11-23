@@ -5,7 +5,7 @@
 package org.itson.mapeomovieset.daos;
 
 import org.itson.entidades.PeliculaEntity;
-import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 /**
  *
@@ -13,5 +13,5 @@ import org.itson.mapeomovieset.excepciones.FindException;
  */
 public interface IPeliculaDAO {
 
-    boolean agregarPelicula(PeliculaEntity pelicula) throws FindException;
+    boolean agregarPelicula(PeliculaEntity pelicula) throws PersistenciaException;
 }

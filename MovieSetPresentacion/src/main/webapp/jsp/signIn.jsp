@@ -50,7 +50,7 @@
                     <span>Or</span>
                 </div>
 
-                <a class="create-account-btn" href="createAccount.jsp">
+                <a class="create-account-btn" href="create-account.jsp">
                     CREATE ACCOUNT
                 </a>
             </div>

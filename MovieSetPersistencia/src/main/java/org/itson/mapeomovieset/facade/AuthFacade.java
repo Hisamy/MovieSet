@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.itson.entidades.UsuarioEntity;
+import org.itson.mapeomovieset.conexion.Conexion;
+import org.itson.mapeomovieset.conexion.IConexion;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 public class AuthFacade implements IAuthFacade {
 
@@ -50,7 +53,7 @@ public class AuthFacade implements IAuthFacade {
             // Intentar agregar el nuevo usuario a la base de datos
             boolean registrado = usuariosDAO.agregarUsuario(nuevoUsuario);
             return registrado ? nuevoUsuario : null;
-        } catch (FindException ex) {
+        } catch (PersistenciaException ex) {
             Logger.getLogger(AuthFacade.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

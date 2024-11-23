@@ -4,7 +4,12 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import org.itson.mapeomovieset.logica.CreateAccount;
+import org.itson.adapter.UsuarioAdapter;
+import org.itson.mapeomovieset.conexion.Conexion;
+import org.itson.mapeomovieset.conexion.IConexion;
+import org.itson.mapeomovieset.daos.IUsuariosDAO;
+import org.itson.mapeomovieset.daos.UsuariosDAO;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 import org.itson.moviesetdtos.UsuarioDTO;
 
 /**
@@ -13,16 +18,18 @@ import org.itson.moviesetdtos.UsuarioDTO;
  */
 public class CreateAccountFacade implements ICreateAccountFacade{
 
-    private CreateAccount createAccount;
+    private final IUsuariosDAO usuarioDAO;
+    private UsuarioAdapter adapter;
 
     public CreateAccountFacade() {
-        createAccount = new CreateAccount();
+        usuarioDAO = new UsuariosDAO();
+        adapter = new UsuarioAdapter();
     }
     
     
     @Override
-    public void sendCreateAccountForm(UsuarioDTO usauarioDatos) {
-        createAccount.sendUsuarioForm(usauarioDatos);
+    public void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException {
+        usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
     }
     
 }

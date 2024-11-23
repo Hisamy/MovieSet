@@ -11,7 +11,7 @@ import org.itson.moviesetdtos.UsuarioDTO;
  *
  * @author hisam
  */
-public class UsarioAdapter {
+public class UsuarioAdapter {
     
     
     public UsuarioEntity usuarioDTOToEntity(UsuarioDTO usuarioDTO){

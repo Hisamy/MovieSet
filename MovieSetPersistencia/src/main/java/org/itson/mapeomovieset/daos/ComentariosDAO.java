@@ -11,7 +11,7 @@ import com.mongodb.client.result.InsertOneResult;
 import org.itson.entidades.ComentarioEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 /**
  *
@@ -19,22 +19,22 @@ import org.itson.mapeomovieset.excepciones.FindException;
  */
 public class ComentariosDAO implements IComentariosDAO {
 
-    private IConexion conexion;
+    private final IConexion conexion;
     private MongoCollection<ComentarioEntity> comentarios;
 
     public ComentariosDAO() {
-        this.conexion = Conexion.getInstance();
+        this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.comentarios = baseDeDatos.getCollection("Comentarios", ComentarioEntity.class);
     }
 
     @Override
-    public boolean agregarComentario(ComentarioEntity comentario) throws FindException {
+    public boolean agregarComentario(ComentarioEntity comentario) throws PersistenciaException {
         try {
             InsertOneResult result = comentarios.insertOne(comentario);
             return result.wasAcknowledged();
         } catch (MongoException ex) {
-            throw new FindException("Error al crear el comentario");
+            throw new PersistenciaException("Error al crear el comentario");
         }
     }
 }

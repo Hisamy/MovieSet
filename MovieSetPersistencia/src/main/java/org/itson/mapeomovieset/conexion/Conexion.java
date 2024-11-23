@@ -33,7 +33,9 @@ public class Conexion implements IConexion {
     }
 
     /**
-     * Crea y establece una conexion con MongoDB, configurando codecs y zona horaria.
+     * Crea y establece una conexion con MongoDB, configurando codecs y zona
+     * horaria.
+     *
      * @return MongoDatabase instancia de la base de datos conectada
      * @throws MongoException si hay error en la conexion
      */
@@ -41,7 +43,7 @@ public class Conexion implements IConexion {
     public MongoDatabase conectar() {
         try {
             // Configuracion de la conexion
-            String cadenaConexion = "mongodb://127.0.0.1:27017";
+            String cadenaConexion = "mongodb://localhost:27017";
             String nombreBaseDatos = "MovieSet";
 
             // Configurar zona horaria
@@ -60,8 +62,7 @@ public class Conexion implements IConexion {
                     .version(ServerApiVersion.V1)
                     .build();
             MongoClientSettings settings = MongoClientSettings.builder()
-                    .applyConnectionString(new ConnectionString(cadenaConexion))
-                    .serverApi(serverApi)
+                    .applyConnectionString(new ConnectionString(cadenaConexion)) 
                     .codecRegistry(pojoCodecRegistry)
                     .build();
 

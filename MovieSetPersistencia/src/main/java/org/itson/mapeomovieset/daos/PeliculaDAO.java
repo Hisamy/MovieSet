@@ -11,7 +11,7 @@ import com.mongodb.client.result.InsertOneResult;
 import org.itson.entidades.PeliculaEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
-import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 /**
  *
@@ -19,22 +19,22 @@ import org.itson.mapeomovieset.excepciones.FindException;
  */
 public class PeliculaDAO implements IPeliculaDAO {
 
-    private IConexion conexion;
+    private final IConexion conexion;
     private MongoCollection<PeliculaEntity> peliculas;
 
     public PeliculaDAO() {
-        this.conexion = Conexion.getInstance();
+        this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.peliculas = baseDeDatos.getCollection("Peliculas", PeliculaEntity.class);
     }
 
     @Override
-    public boolean agregarPelicula(PeliculaEntity pelicula) throws FindException {
+    public boolean agregarPelicula(PeliculaEntity pelicula) throws PersistenciaException {
         try {
             InsertOneResult result = peliculas.insertOne(pelicula);
             return result.wasAcknowledged();
         } catch (MongoException ex) {
-            throw new FindException("Error al crear la pelicula");
+            throw new PersistenciaException("Error al crear la pelicula");
         }
     }
 

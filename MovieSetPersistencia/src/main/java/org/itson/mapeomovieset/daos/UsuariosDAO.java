@@ -5,36 +5,37 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
-import org.bson.types.ObjectId;
 import org.itson.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
 import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 public class UsuariosDAO implements IUsuariosDAO {
 
-    private IConexion conexion;
+    private final IConexion conexion;
     private MongoCollection<UsuarioEntity> usuarios;
 
     public UsuariosDAO() {
-        this.conexion = Conexion.getInstance();
+        this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.usuarios = baseDeDatos.getCollection("Usuarios", UsuarioEntity.class);
+
     }
 
     @Override
-    public boolean agregarUsuario(UsuarioEntity usuario) throws FindException {
+    public boolean agregarUsuario(UsuarioEntity usuario) throws PersistenciaException {
         try {
             InsertOneResult result = usuarios.insertOne(usuario);
             return result.wasAcknowledged();
         } catch (MongoException ex) {
-            throw new FindException("Error al crear usuario");
+            throw new PersistenciaException("Error al agregar usuario en bd");
         }
     }
 
     @Override
     public UsuarioEntity buscarUsuarioPorCorreo(String correo) throws FindException {
-        try{
+        try {
             return usuarios.find(Filters.eq("correo", correo)).first();
         } catch (MongoException ex) {
             throw new FindException("Error al encontrar correo");

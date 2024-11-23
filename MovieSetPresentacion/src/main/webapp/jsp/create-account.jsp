@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +15,8 @@
 
         <div class="container">
             <h1>JOIN THE COMMUNITY</h1>
-            <p class="subtitle">Welcome to Movieset, create your account</p>
-            <form class="signup-form" action="${pageContext.request.contextPath}/SVCreateAccount" method="POST" enctype="multipart/form-data">
+            <p class="subtitle">Welcome to Movieset, create your account</p>    
+            <form class="signup-form" action="<c:url value='/SVCreateAccount'/>" method="POST" >
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
@@ -26,14 +26,15 @@
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-
-               
-
-               <!-- 
+                
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
+               
+
+               <!-- 
+                
 
                 <div class="form-group">
                     <label for="repeat-password">Repeat password</label>

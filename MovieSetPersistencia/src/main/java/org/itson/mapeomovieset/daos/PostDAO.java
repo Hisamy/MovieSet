@@ -12,6 +12,7 @@ import org.itson.entidades.PostEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
 import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.mapeomovieset.excepciones.PersistenciaException;
 
 /**
  *
@@ -22,19 +23,19 @@ public class PostDAO implements IPostDAO{
     private final IConexion conexion;
     private MongoCollection<PostEntity> post;
 
-    public PostDAO() {
-        this.conexion = Conexion.getInstance();
+    public PostDAO(IConexion conexion) {
+        this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.post = baseDeDatos.getCollection("Post", PostEntity.class);
     }
     
     @Override
-    public boolean agregarComentario(PostEntity post) throws FindException {
+    public boolean agregarComentario(PostEntity post) throws PersistenciaException {
         try {
             InsertOneResult result = this.post.insertOne(post);
             return result.wasAcknowledged();
         } catch (MongoException ex) {
-            throw new FindException("Error al crear Post");
+            throw new PersistenciaException("Error al crear Post");
         }
     }
     
