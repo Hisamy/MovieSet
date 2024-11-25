@@ -20,7 +20,6 @@ public class UsuariosDAO implements IUsuariosDAO {
         this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.usuarios = baseDeDatos.getCollection("Usuarios", UsuarioEntity.class);
-
     }
 
     @Override

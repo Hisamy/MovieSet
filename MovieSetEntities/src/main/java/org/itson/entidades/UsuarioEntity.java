@@ -3,6 +3,7 @@ package org.itson.entidades;
 import java.util.Date;
 import org.bson.types.ObjectId;
 
+
 public class UsuarioEntity {
 
     private ObjectId id;

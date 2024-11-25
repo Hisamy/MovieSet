@@ -13,19 +13,19 @@ import org.itson.moviesetdtos.UsuarioDTO;
  */
 public class UsuarioAdapter {
     
-    
-    public UsuarioEntity usuarioDTOToEntity(UsuarioDTO usuarioDTO){
-        return new UsuarioEntity(
-                usuarioDTO.getUsername(),
-                usuarioDTO.getCorreo(), 
-                usuarioDTO.getContrasenia());
-    }
-    
-     public UsuarioDTO usuarioEntityToDTO(UsuarioEntity usuarioEntity){
-         UsuarioDTO usuarioDTO = new UsuarioDTO();
-         usuarioDTO.setCorreo(usuarioEntity.getCorreo());
-         usuarioDTO.setUsername(usuarioEntity.getUsername());
-         
-         return usuarioDTO;
-    }
+//    
+//    public UsuarioEntity usuarioDTOToEntity(UsuarioDTO usuarioDTO){
+//        return new UsuarioEntity(
+//                usuarioDTO.getUsername(),
+//                usuarioDTO.getCorreo(), 
+//                usuarioDTO.getContrasenia());
+//    }
+//    
+//     public UsuarioDTO usuarioEntityToDTO(UsuarioEntity usuarioEntity){
+//         UsuarioDTO usuarioDTO = new UsuarioDTO();
+//         usuarioDTO.setCorreo(usuarioEntity.getCorreo());
+//         usuarioDTO.setUsername(usuarioEntity.getUsername());
+//         
+//         return usuarioDTO;
+//    }
 }

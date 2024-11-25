@@ -31,7 +31,7 @@ public class AuthFacade implements IAuthFacade {
             String ciudad, 
             Date fechaNacimiento, 
             String genero) {
-        // Validar los datos de registro
+    
         validarDatosRegistro(nombre, correo, contrasenia);
 
         // Verificar si el correo ya está registrado
