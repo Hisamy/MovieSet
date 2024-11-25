@@ -14,7 +14,7 @@
         </div>
         <div class="nav-links">
             <a href="signIn.jsp">Sign in</a>
-            <a href="createAccount.jsp">Create account</a>
+            <a href="create-account.jsp">Create account</a>
             <a href="index.jsp#films">Films</a>
             <a href="moviedle.jsp">Moviedle</a>
             

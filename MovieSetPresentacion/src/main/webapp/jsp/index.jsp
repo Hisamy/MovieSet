@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <jsp:include page="header.jsp" />
+        <jsp:include page="fragmentos/header.jsp" />
 
         <main>
             <section class="hero">
