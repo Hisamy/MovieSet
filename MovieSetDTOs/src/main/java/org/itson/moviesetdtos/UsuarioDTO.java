@@ -22,8 +22,17 @@ public class UsuarioDTO {
     private String genre;
     private Date birthday;
     private String rol;
+    private String avatar;
 
     public UsuarioDTO() {
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getGenre() {
