@@ -13,8 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.itson.entidades.UsuarioEntity;
-import org.itson.mapeomovieset.facade.AuthFacade;
+    import org.itson.mapeomovieset.facade.AuthFacade;
 import org.itson.mapeomovieset.facade.IAuthFacade;
 import org.itson.moviesetdtos.UsuarioDTO;
 

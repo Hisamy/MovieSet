@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
 
     <head>
@@ -71,8 +71,8 @@
                             <p>Amarte duele</p>
                         </div>
                         <div class="movie-item">
-                            <img src="https://m.media-amazon.com/images/M/MV5BMzdmYzZkODEtMWFmYy00YTk3LWE0ZTEtMjcwOTViZmRiNGUwXkEyXkFqcGc@._V1_.jpg" alt="Una película de huevos">
-                            <p>Una película de huevos</p>
+                            <img src="https://m.media-amazon.com/images/M/MV5BMzdmYzZkODEtMWFmYy00YTk3LWE0ZTEtMjcwOTViZmRiNGUwXkEyXkFqcGc@._V1_.jpg" alt="Una pelÃ­cula de huevos">
+                            <p>Una pelÃ­cula de huevos</p>
                         </div>
                         <div class="movie-item">
                             <img src="../images/Leyenda_Nahuala.webp" alt="La leyenda de la Nahuala">
