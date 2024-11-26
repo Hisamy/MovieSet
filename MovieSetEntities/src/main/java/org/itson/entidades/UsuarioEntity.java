@@ -3,7 +3,6 @@ package org.itson.entidades;
 import java.util.Date;
 import org.bson.types.ObjectId;
 
-
 public class UsuarioEntity {
 
     private ObjectId id;
@@ -21,12 +20,9 @@ public class UsuarioEntity {
     private Date birthday;
     private byte[] avatar;
 
-    
-
     public UsuarioEntity() {
     }
 
-    public void setAvatar(String avatar) {
     public UsuarioEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
         this.correo = correo;
         this.name = name;
@@ -46,7 +42,7 @@ public class UsuarioEntity {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    
+
     public String getCountry() {
         return country;
     }
@@ -103,7 +99,6 @@ public class UsuarioEntity {
         this.name = name;
     }
 
-
     public String getLastName() {
         return lastName;
     }
@@ -128,7 +123,6 @@ public class UsuarioEntity {
         this.username = username;
     }
 
-    
     @Override
     public String toString() {
         return "Usuario{"
