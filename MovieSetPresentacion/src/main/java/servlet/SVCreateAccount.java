@@ -14,11 +14,11 @@ import java.util.logging.Logger;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
 import org.itson.mapeomovieset.facade.CreateAccountFacade;
 import org.itson.mapeomovieset.facade.ICreateAccountFacade;
-//import org.itson.moviesetdtos.UsuarioDTO;
+import org.itson.moviesetdtos.UsuarioDTO;
 
 public class SVCreateAccount extends HttpServlet {
 
-//    private UsuarioDTO usuarioDTO;
+    private UsuarioDTO usuarioDTO;
     private ICreateAccountFacade createAccountFacade;
 
     /**
@@ -46,31 +46,38 @@ public class SVCreateAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        try {
-//            //Obtener los datos del formulario
-//            String username = request.getParameter(
-//                    "username");
-//            String email = request.getParameter(
-//                    "email");
-//            String password = request.getParameter(
-//                    "password");
-//            System.out.println(username + email + password);
-////            usuarioDTO = new UsuarioDTO();
-////
-////            
-////
-////            usuarioDTO.setContrasenia(password);
-////            usuarioDTO.setCorreo(email);
-////            usuarioDTO.setUsername(username);
-//            
-//            createAccountFacade = new CreateAccountFacade();
-//            createAccountFacade.sendCreateAccountForm(usuarioDTO);
-//        } catch (PersistenciaException ex) {
-//            Logger.getLogger(SVCreateAccount.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+
+            //Obtener los datos del formulario
+            String username = request.getParameter(
+                    "username");
+            String email = request.getParameter(
+                    "email");
+            String password = request.getParameter(
+                    "password");
+            String repeatPassword = request.getParameter(
+                    "repeat-password");
+            if (!password.equals(repeatPassword)) {
+                response.sendRedirect("jsp/create-account.jsp?error=password");
+                return;
+            } else {
+                //Se guardan en una DTO y se mandan.
+                usuarioDTO = new UsuarioDTO();
+                usuarioDTO.setContrasenia(password);
+                usuarioDTO.setCorreo(email);
+                usuarioDTO.setUsername(username);
+
+                createAccountFacade = new CreateAccountFacade();
+                createAccountFacade.sendCreateAccountForm(usuarioDTO);
+                
+                response.sendRedirect("jsp/create-account.jsp?success=true");
+                
+            }
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(SVCreateAccount.class.getName()).log(Level.SEVERE, null, ex);
+             response.sendRedirect("jsp/create-account.jsp?error=general");
+        }
 
     }
-    
-    
 
 }
