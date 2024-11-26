@@ -14,21 +14,24 @@ import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Logger;
 import org.itson.moviesetdtos.UsuarioDTO;
 
 /**
  *
  * @author castr
  */
+@WebFilter(filterName = "FiltroAutenticacion", urlPatterns = {"/jsp/*"})
 public class FiltroAutenticacion implements Filter {
 
-    private FilterConfig filterConfig = null;
+    private static final Logger LOGGER = Logger.getLogger(FiltroAutenticacion.class.getName());
 
     private static final String[] PUBLIC_URLS = {
-        "/jsp/createAccount.jsp",
+        "/jsp/create-account.jsp",
         "/jsp/signIn.jsp",
         "/jsp/index.jsp",
         "/Login"
@@ -63,8 +66,9 @@ public class FiltroAutenticacion implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         String ruta = getRutaSolicitada(httpRequest);
-        HttpSession session = httpRequest.getSession(false);
+        LOGGER.info("Filtro ejecutándose para: " + ruta);
 
+        HttpSession session = httpRequest.getSession(false);
         UsuarioDTO usuarioDTO = null;
         if (session != null) {
             usuarioDTO = (UsuarioDTO) session.getAttribute("usuario");
@@ -77,10 +81,12 @@ public class FiltroAutenticacion implements Filter {
             previousPage = httpRequest.getContextPath() + "/jsp/index.jsp";
         }
 
-        // Manejo de rutas publicas
+        // Manejo de rutas públicas
         if (isPublicURL(ruta)) {
-            // Si se encuentra autenticado entonces no puede acceder a paginas de login/registro
-            if (isAuthenticated && (ruta.contains("signIn.jsp") || ruta.contains("create-account.jsp"))) {
+            LOGGER.info("Accediendo a ruta pública: " + ruta);
+            // Si está autenticado no puede acceder a login/registro
+            if (isAuthenticated && (ruta.contains("signIn.jsp") || ruta.contains("createAccount.jsp"))) {
+                LOGGER.info("Usuario autenticado intentando acceder a página de login/registro");
                 httpResponse.sendRedirect(previousPage);
                 return;
             }
@@ -88,28 +94,35 @@ public class FiltroAutenticacion implements Filter {
             return;
         }
 
-        // Si no está autenticado entonces dirige a iniciar sesion
+        // Si no está autenticado, redirige a login
         if (!isAuthenticated) {
+            LOGGER.info("Usuario no autenticado intentando acceder a: " + ruta);
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/signIn.jsp");
             return;
         }
 
-        // Manejo de rutas de usuario autenticado
+        // Manejo de rutas autenticadas
         if (isAuthenticatedURL(ruta)) {
+            LOGGER.info("Accediendo a ruta autenticada: " + ruta);
             chain.doFilter(request, response);
             return;
         }
 
-        // Manejo de rutas de admin
+        // Manejo de rutas admin
         if (isAdminURL(ruta)) {
+            LOGGER.info("Verificando acceso admin para usuario con rol: " + usuarioDTO.getRol());
             if ("admin".equals(usuarioDTO.getRol())) {
                 chain.doFilter(request, response);
+                return;
             } else {
+                LOGGER.info("Acceso denegado a página de admin");
                 httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/index.jsp");
+                return;
             }
         }
 
         // Ruta no definida
+        LOGGER.info("Ruta no definida, redirigiendo a index: " + ruta);
         httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/index.jsp");
     }
 
@@ -172,10 +185,11 @@ public class FiltroAutenticacion implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {
-        this.filterConfig = filterConfig;
+        LOGGER.info("Inicializando FiltroAutenticacion");
     }
 
     @Override
     public void destroy() {
+        LOGGER.info("Destruyendo FiltroAutenticacion");
     }
 }
