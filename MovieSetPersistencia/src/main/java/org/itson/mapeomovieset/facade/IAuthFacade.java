@@ -3,6 +3,7 @@ package org.itson.mapeomovieset.facade;
 
 import java.util.Date;
 import org.itson.entidades.UsuarioEntity;
+import org.itson.moviesetdtos.UsuarioDTO;
 
 /**
  * Interfaz que define las operaciones de autenticación y registro de usuarios.
@@ -36,7 +37,7 @@ public interface IAuthFacade {
      * @return UsuarioEntity autenticado
 
      */
-    UsuarioEntity iniciarSesion(String correo, String contrasenia);
+    UsuarioDTO iniciarSesion(String correo, String contrasenia);
 
     /**
      * Verifica si un correo electrónico ya está registrado.
