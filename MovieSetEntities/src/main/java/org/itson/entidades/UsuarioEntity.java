@@ -7,29 +7,26 @@ import org.bson.types.ObjectId;
 public class UsuarioEntity {
 
     private ObjectId id;
-    private String nombre;
+    private String name;
     private String username;
-    private String segundoNombre;
-    private String apellidoMaterno;
-    private String apellidoPaterno;
+    private String lastName;
     private String correo;
     private String contrasenia;
-    private String telefono;
     private String avatar;
-    private String ciudad;
+    private String pais;
     private Date fechaNacimiento;
     private String genero;
 
-    public UsuarioEntity(String username, String correo, String contrasenia) {
+    public UsuarioEntity(String name, String username, String lastName, String correo, String contrasenia) {
+        this.name = name;
         this.username = username;
+        this.lastName = lastName;
         this.correo = correo;
         this.contrasenia = contrasenia;
     }
 
     public UsuarioEntity() {
     }
-
-    
 
     public String getGenero() {
         return genero;
@@ -47,12 +44,12 @@ public class UsuarioEntity {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getPais() {
+        return pais;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     public String getAvatar() {
@@ -63,13 +60,6 @@ public class UsuarioEntity {
         this.avatar = avatar;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public String getContrasenia() {
         return contrasenia;
@@ -87,36 +77,21 @@ public class UsuarioEntity {
         this.correo = correo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSegundoNombre() {
-        return segundoNombre;
+
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
-    }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
-    }
-
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public ObjectId getId() {
@@ -141,15 +116,12 @@ public class UsuarioEntity {
         return "Usuario{"
                 + ""
                 + "id=" + id
-                + ", nombre=" + nombre
-                + ", segundoNombre=" + segundoNombre
-                + ", apellidoMaterno=" + apellidoMaterno
-                + ", apellidoPaterno=" + apellidoPaterno
+                + ", nombre=" + name
+                + ", apellidoMaterno=" + lastName
                 + ", correo=" + correo
                 + ", contrasenia=" + contrasenia
-                + ", telefono=" + telefono
                 + ", avatar=" + avatar
-                + ", ciudad=" + ciudad
+                + ", ciudad=" + pais
                 + ", fechaNacimiento=" + fechaNacimiento
                 + ", genero=" + genero
                 + '}';

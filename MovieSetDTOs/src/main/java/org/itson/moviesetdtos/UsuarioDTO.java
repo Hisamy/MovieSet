@@ -4,6 +4,8 @@
  */
 package org.itson.moviesetdtos;
 
+import java.util.Date;
+
 /**
  *
  * @author hisam
@@ -11,10 +13,33 @@ package org.itson.moviesetdtos;
 public class UsuarioDTO {
 
     private String correo;
+    private String name;
+    private String lastName;
     private String username;
     private String contrasenia;
+    private String country;
+    private String gender;
+    private String genre;
+    private Date birthday;
+    
 
     public UsuarioDTO() {
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     
@@ -42,5 +67,38 @@ public class UsuarioDTO {
         this.username = username;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
     
+    
+
 }

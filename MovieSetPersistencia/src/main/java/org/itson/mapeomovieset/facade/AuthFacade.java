@@ -41,11 +41,10 @@ public class AuthFacade implements IAuthFacade {
 
         // Crear un nuevo usuario
         UsuarioEntity nuevoUsuario = new UsuarioEntity();
-        nuevoUsuario.setNombre(nombre);
+        nuevoUsuario.setName(nombre);
         nuevoUsuario.setCorreo(correo);
         nuevoUsuario.setContrasenia(contrasenia);
-        nuevoUsuario.setTelefono(telefono);
-        nuevoUsuario.setCiudad(ciudad);
+        nuevoUsuario.setPais(ciudad);
         nuevoUsuario.setFechaNacimiento(fechaNacimiento);
         nuevoUsuario.setGenero(genero);
 

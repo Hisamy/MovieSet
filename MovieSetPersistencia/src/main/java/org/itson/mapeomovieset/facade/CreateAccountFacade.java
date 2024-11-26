@@ -29,7 +29,7 @@ public class CreateAccountFacade implements ICreateAccountFacade{
     
     @Override
     public void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException {
-//        usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
+        usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
     }
     
 }

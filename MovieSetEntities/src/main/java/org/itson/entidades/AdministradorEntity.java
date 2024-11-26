@@ -9,9 +9,11 @@ package org.itson.entidades;
  * @author hisam
  */
 public class AdministradorEntity extends UsuarioEntity{
-    
-    public AdministradorEntity(String username, String correo, String contrasenia) {
-        super(username, correo, contrasenia);
+
+    public AdministradorEntity(String name, String username, String lastName, String correo, String contrasenia) {
+        super(name, username, lastName, correo, contrasenia);
     }
+    
+    
     
 }
