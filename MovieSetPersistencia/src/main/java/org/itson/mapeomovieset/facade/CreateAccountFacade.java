@@ -4,6 +4,9 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.itson.adapter.UsuarioAdapter;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
@@ -16,7 +19,7 @@ import org.itson.moviesetdtos.UsuarioDTO;
  *
  * @author hisam
  */
-public class CreateAccountFacade implements ICreateAccountFacade{
+public class CreateAccountFacade implements ICreateAccountFacade {
 
     private final IUsuariosDAO usuarioDAO;
     private UsuarioAdapter adapter;
@@ -25,11 +28,15 @@ public class CreateAccountFacade implements ICreateAccountFacade{
         usuarioDAO = new UsuariosDAO();
         adapter = new UsuarioAdapter();
     }
-    
-    
+
     @Override
     public void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException {
-        usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
+        try {
+            usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
+        } catch (IOException ex) {
+            Logger.getLogger(CreateAccountFacade.class.getName()).log(Level.SEVERE, "Error al agregar usuario", ex);
+            throw new PersistenciaException("Error al crear la cuenta: " + ex.getMessage());
+        }
     }
-    
+
 }

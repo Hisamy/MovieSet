@@ -62,8 +62,55 @@ public class FiltroAutenticacion implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        
+        String ruta = getRutaSolicitada(httpRequest);
+        HttpSession session = httpRequest.getSession(false);
 
+        UsuarioDTO usuarioDTO = null;
+        if (session != null) {
+            usuarioDTO = (UsuarioDTO) session.getAttribute("usuario");
+        }
+        boolean isAuthenticated = (usuarioDTO != null);
+
+        // Obtener la página anterior o establecer index por defecto
+        String previousPage = httpRequest.getHeader("Referer");
+        if (previousPage == null || previousPage.isEmpty()) {
+            previousPage = httpRequest.getContextPath() + "/jsp/index.jsp";
+        }
+
+        // Manejo de rutas publicas
+        if (isPublicURL(ruta)) {
+            // Si se encuentra autenticado entonces no puede acceder a paginas de login/registro
+            if (isAuthenticated && (ruta.contains("signIn.jsp") || ruta.contains("create-account.jsp"))) {
+                httpResponse.sendRedirect(previousPage);
+                return;
+            }
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // Si no está autenticado entonces dirige a iniciar sesion
+        if (!isAuthenticated) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/signIn.jsp");
+            return;
+        }
+
+        // Manejo de rutas de usuario autenticado
+        if (isAuthenticatedURL(ruta)) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // Manejo de rutas de admin
+        if (isAdminURL(ruta)) {
+            if ("admin".equals(usuarioDTO.getRol())) {
+                chain.doFilter(request, response);
+            } else {
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/index.jsp");
+            }
+        }
+
+        // Ruta no definida
+        httpResponse.sendRedirect(httpRequest.getContextPath() + "/jsp/index.jsp");
     }
 
     /*

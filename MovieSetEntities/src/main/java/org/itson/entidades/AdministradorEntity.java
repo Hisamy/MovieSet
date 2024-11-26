@@ -10,18 +10,14 @@ import java.util.Date;
  *
  * @author hisam
  */
-public class AdministradorEntity extends UsuarioEntity{
+public class AdministradorEntity extends UsuarioEntity {
 
     public AdministradorEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, String avatar) {
-        
+
     }
 
-    public AdministradorEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
-        super(correo, name, lastName, username, contrasenia, country, gender, birthday, avatar);
+    public AdministradorEntity(String correo, String rol, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
+        super(correo, rol, name, lastName, username, contrasenia, country, gender, birthday, avatar);
     }
 
-    
-    
-    
-    
 }

@@ -11,9 +11,6 @@ public class UsuarioEntity {
     private String lastName;
     private String username;
     private String contrasenia;
-    private String pais;
-    private Date fechaNacimiento;
-    private String genero;
     private String rol;
     private String country;
     private String gender;
@@ -23,8 +20,9 @@ public class UsuarioEntity {
     public UsuarioEntity() {
     }
 
-    public UsuarioEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
+    public UsuarioEntity(String correo, String rol, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
         this.correo = correo;
+        this.rol = rol;
         this.name = name;
         this.lastName = lastName;
         this.username = username;
