@@ -4,6 +4,9 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.itson.adapter.UsuarioAdapter;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
@@ -29,7 +32,11 @@ public class CreateAccountFacade implements ICreateAccountFacade{
     
     @Override
     public void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException {
-        usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
+        try {
+            usuarioDAO.agregarUsuario(adapter.usuarioDTOToEntity(usuarioForm));
+        } catch (IOException ex) {
+            Logger.getLogger(CreateAccountFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
