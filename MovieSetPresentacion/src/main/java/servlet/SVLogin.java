@@ -26,7 +26,7 @@ import org.itson.moviesetdtos.UsuarioDTO;
 public class SVLogin extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(SVLogin.class.getName());
-    private static final String LOGIN_PAGE = "/jsp/sign-in.jsp";
+    private static final String LOGIN_PAGE = "/jsp/signIn.jsp";
     private static final String INDEX_PAGE = "/jsp/index.jsp";
     private final IAuthFacade authFacade;
 
@@ -72,21 +72,17 @@ public class SVLogin extends HttpServlet {
                 return;
             }
 
-            UsuarioDTO usuarioForm = new UsuarioDTO();
-            usuarioForm.setCorreo(email);
-            usuarioForm.setContrasenia(password);
+            // Intentar autenticar al usuario directamente
+            UsuarioDTO usuarioAutenticado = authenticateUser(email, password);
 
-            // Intentar autenticar al usuario
-            usuarioForm = authenticateUser(email, password);
-
-            if (usuarioForm == null) {
+            if (usuarioAutenticado == null) {
                 setErrorMessage(request, "Email o contraseña incorrectos");
                 redirectToLogin(request, response);
                 return;
             }
 
-            // Iniciar sesión
-            initializeUserSession(request, usuarioForm);
+            // Iniciar sesión con el usuario autenticado que ya tiene todos los datos
+            initializeUserSession(request, usuarioAutenticado);
 
             // Redirigir al índice
             response.sendRedirect(request.getContextPath() + INDEX_PAGE);
@@ -110,6 +106,7 @@ public class SVLogin extends HttpServlet {
     private void initializeUserSession(HttpServletRequest request, UsuarioDTO usuario) {
         HttpSession session = request.getSession();
         session.setAttribute("usuario", usuario);
+//        session.setAttribute("rol", usuario.getRol());
         System.out.println("Este es el nombre " + usuario.getUsername());
         System.out.println("Este es el rol " + usuario.getRol());
 

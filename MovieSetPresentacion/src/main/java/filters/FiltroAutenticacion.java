@@ -37,7 +37,7 @@ public class FiltroAutenticacion implements Filter {
     private static final String[] AUTHENTICATED_URLS = {
         "/jsp/myProfile.jsp",
         "/jsp/rateComment.jsp",
-        "/jsp/movidle.jsp"
+        "/jsp/moviedle.jsp"
     };
 
     private static final String[] ADMIN_URLS = {

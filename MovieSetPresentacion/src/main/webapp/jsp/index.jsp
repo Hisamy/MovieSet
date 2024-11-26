@@ -11,7 +11,6 @@
 
     <body>
         <jsp:include page="fragmentos/header.jsp" />
-
         <main>
             <section class="hero">
                 <img src="../images/a-trip-to-the-moon.png" alt="A trip to the moon" class="polaroid">

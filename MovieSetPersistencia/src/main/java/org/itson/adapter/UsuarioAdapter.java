@@ -73,7 +73,7 @@ public class UsuarioAdapter {
         usuarioDTO.setBirthday(usuarioEntity.getBirthday());
         usuarioDTO.setCountry(usuarioEntity.getCountry());
         usuarioDTO.setGender(usuarioEntity.getGender());
-
+        usuarioDTO.setRol(usuarioEntity.getRol());
         return usuarioDTO;
     }
 }
