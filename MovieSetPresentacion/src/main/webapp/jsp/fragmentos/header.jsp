@@ -1,8 +1,4 @@
-<%-- 
-    Document   : header
-    Created on : Nov 17, 2024, 7:55:30 PM
-    Author     : hisam
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
@@ -38,6 +34,11 @@
             <div class="search">
                 <img src="../images/Search.png" alt="search">
                 <input type="search">
+            </div>
+            <div class="Perfil">
+                <c:if test="${sessionScope.usuario != null}">
+                    <a href="myProfile.jsp"> ${sessionScope.usuario.username}</a>
+                </c:if>
             </div>
         </nav>
     </header>
