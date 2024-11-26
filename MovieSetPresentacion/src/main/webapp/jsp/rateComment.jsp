@@ -59,14 +59,39 @@
             </section>
             <section class="comment">
                 <h4>Leave a comment</h4>
-                <form action="action="<c:url value='/SVCreatePost'/>"" method="post">
-                    <textarea name="comment" id="comment" cols="50" rows="5" placeholder="COMMENT..."></textarea>
+                <form action="<c:url value='/SVCreatePost'/>" method="post">
+                    <textarea name="comment" id="comment" cols="50" rows="5" placeholder="Make a Post..."></textarea>
                     <button type="submit">Post</button>
                 </form>
 
             </section>
         </main>    
     </div>
-   
+   <script>
+            window.onload = function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const success = urlParams.get('success');
+                const error = urlParams.get('error');
+
+                if (success === 'true') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Post uploaded!',
+                        text: 'Keep criticizing films.',
+                        confirmButtonText: 'Continue'
+        });
+                }
+
+                if (error === 'false') {
+                    Swal.fire({
+                    icon: 'error',
+                    title: "We couldn't upload the post.",
+                    text: 'Please try again.',
+                    confirmButtonText: 'Retry'
+                });
+                }
+            };
+        </script>        
+
 </body>
 </html>

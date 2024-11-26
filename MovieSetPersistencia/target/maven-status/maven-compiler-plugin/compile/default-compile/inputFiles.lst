@@ -1,3 +1,4 @@
+C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\adapter\PostAdapter.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\adapter\UsuarioAdapter.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\conexion\Conexion.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\conexion\IConexion.java
@@ -15,9 +16,11 @@ C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersisten
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\AuthFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\CommentFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\CreateAccountFacade.java
+C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\CreatePostFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\IAuthFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\ICommentFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\ICreateAccountFacade.java
+C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\ICreatePostFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\IMoviePostFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\IPostFacade.java
 C:\Users\hisam\OneDrive\Documents\GitHub\pf_appweb_robloxianos\MovieSetPersistencia\src\main\java\org\itson\mapeomovieset\facade\MoviePostFacade.java
