@@ -4,6 +4,7 @@
         <servlet-name>SVCreatePost</servlet-name>
         <url-pattern>/SVCreatePost</url-pattern>
     </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

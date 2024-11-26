@@ -61,7 +61,7 @@
                 <h4>Leave a comment</h4>
                 <form action="<c:url value='/SVCreatePost'/>" method="post">
                     <textarea name="comment" id="comment" cols="50" rows="5" placeholder="Make a Post..."></textarea>
-                    <button type="submit">Post</button>
+                    <button type="submit">Post</button> 
                 </form>
 
             </section>

@@ -13,8 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.itson.mapeomovieset.excepciones.FindException;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
 import org.itson.mapeomovieset.facade.CreatePostFacade;
@@ -37,24 +36,16 @@ public class SVCreatePost extends HttpServlet {
         postDTO = new PostDTO();
     }
 
-    public void procesarSolicitud(HttpServletRequest request) throws FindException{
+    public void procesarSolicitud(HttpServletRequest request){
         HttpSession session = request.getSession();
         autor = (UsuarioDTO) session.getAttribute("usuario");
-        
-        if (autor == null) {
-            throw new FindException("El usuario no está autenticado en la sesión.");
-        }
+
    
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            procesarSolicitud(request);
-        } catch (FindException ex) {
-            response.sendRedirect("jsp/create-account.jsp");
-        }
         LocalDateTime now = LocalDateTime.now();
         String comment = request.getParameter("comment");
         Date fechaPublicacion = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
