@@ -35,11 +35,6 @@
                 <img src="../images/Search.png" alt="search">
                 <input type="search">
             </div>
-            <div class="Perfil">
-                <c:if test="${sessionScope.usuario != null}">
-                    <a href="myProfile.jsp"> ${sessionScope.usuario.username}</a>
-                </c:if>
-            </div>
         </nav>
     </header>
 </html>
