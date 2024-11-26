@@ -110,7 +110,8 @@ public class SVLogin extends HttpServlet {
     private void initializeUserSession(HttpServletRequest request, UsuarioDTO usuario) {
         HttpSession session = request.getSession();
         session.setAttribute("usuario", usuario);
-        session.setAttribute("userName", usuario.getUsername());
+        System.out.println("Este es el nombre " + usuario.getUsername());
+        System.out.println("Este es el rol " + usuario.getRol());
 
         // Establecer tiempo de expiración de la sesión (30 minutos)
         session.setMaxInactiveInterval(30 * 60);

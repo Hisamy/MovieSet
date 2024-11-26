@@ -25,7 +25,17 @@ public class UsuarioAdapter {
         byte[] avatarBytes = null;
 
         if (usuarioDTO.getAvatar() != null && !usuarioDTO.getAvatar().isEmpty()) {
-            File avatarFile = new File(usuarioDTO.getAvatar());
+            // Construir la ruta completa desde la raíz de la aplicación web
+            String baseWebAppPath = System.getProperty("catalina.base")
+                    + File.separator + "webapps"
+                    + File.separator + "MovieSet";
+
+            // Combinar la ruta base con la ruta relativa del avatar
+            String rutaCompleta = baseWebAppPath + File.separator + usuarioDTO.getAvatar();
+
+            LOGGER.log(Level.INFO, "Intentando acceder al archivo: " + rutaCompleta);
+            File avatarFile = new File(rutaCompleta);
+            System.out.println("Ruta del archivo " + avatarFile.getAbsolutePath());
             if (avatarFile.exists()) {
                 try (FileInputStream fileInputStream = new FileInputStream(avatarFile)) {
                     avatarBytes = fileInputStream.readAllBytes();
@@ -40,6 +50,7 @@ public class UsuarioAdapter {
 
         return new UsuarioEntity(
                 usuarioDTO.getCorreo(),
+                usuarioDTO.getRol(),
                 usuarioDTO.getName(),
                 usuarioDTO.getLastName(),
                 usuarioDTO.getUsername(),

@@ -21,6 +21,7 @@ public class UsuarioDTO {
     private String gender;
     private String genre;
     private Date birthday;
+    private String rol;
     private String avatar;
 
     public UsuarioDTO() {
@@ -50,7 +51,6 @@ public class UsuarioDTO {
         this.birthday = birthday;
     }
 
-    
     public String getCorreo() {
         return correo;
     }
@@ -106,7 +106,13 @@ public class UsuarioDTO {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    
-    
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
 }

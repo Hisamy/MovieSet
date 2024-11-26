@@ -19,7 +19,7 @@ import org.itson.moviesetdtos.UsuarioDTO;
  *
  * @author hisam
  */
-public class CreateAccountFacade implements ICreateAccountFacade{
+public class CreateAccountFacade implements ICreateAccountFacade {
 
     private final IUsuariosDAO usuarioDAO;
     private UsuarioAdapter adapter;
@@ -28,8 +28,7 @@ public class CreateAccountFacade implements ICreateAccountFacade{
         usuarioDAO = new UsuariosDAO();
         adapter = new UsuarioAdapter();
     }
-    
-    
+
     @Override
     public void sendCreateAccountForm(UsuarioDTO usuarioForm) throws PersistenciaException {
         try {
@@ -38,5 +37,5 @@ public class CreateAccountFacade implements ICreateAccountFacade{
             Logger.getLogger(CreateAccountFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

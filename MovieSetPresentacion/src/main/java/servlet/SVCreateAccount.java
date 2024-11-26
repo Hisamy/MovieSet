@@ -70,12 +70,13 @@ public class SVCreateAccount extends HttpServlet {
             String birthdateStr = request.getParameter("birthdate");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date birthdate = dateFormat.parse(birthdateStr);
-
             String gender = request.getParameter("gender");
+
             if (!password.equals(repeatPassword)) {
                 response.sendRedirect("jsp/create-account.jsp?error=password");
             } else {
                 String avatar = procesarAvatar(avatarPart);
+
                 //Se guardan en una DTO y se mandan.
                 usuarioDTO = new UsuarioDTO();
                 usuarioDTO.setContrasenia(password);
@@ -87,7 +88,8 @@ public class SVCreateAccount extends HttpServlet {
                 usuarioDTO.setCountry(country);
                 usuarioDTO.setGender(gender);
                 usuarioDTO.setAvatar(avatar);
-                
+                usuarioDTO.setRol("user");
+
                 createAccountFacade = new CreateAccountFacade();
                 createAccountFacade.sendCreateAccountForm(usuarioDTO);
 
@@ -105,22 +107,22 @@ public class SVCreateAccount extends HttpServlet {
     }
 
     private String procesarAvatar(Part avatar) throws IOException {
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+        String baseWebAppPath = System.getProperty("catalina.base")
+                + File.separator + "webapps"
+                + File.separator + "MovieSet";
+        String uploadPath = baseWebAppPath + File.separator + "uploads";
+
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-            uploadDir.mkdir(); // Crear directorio si no existe
+            uploadDir.mkdirs();
         }
 
-    // Obtener el nombre del archivo
         String avatarFileName = UUID.randomUUID().toString() + "_" + avatar.getSubmittedFileName();
         String avatarFilePath = uploadPath + File.separator + avatarFileName;
 
-    // Guardar el archivo
         avatar.write(avatarFilePath);
 
-    // Setear la ruta relativa en UsuarioDTO
-        String path = "uploads/" + avatarFileName;
-        return path;
+        return "uploads/" + avatarFileName;
 
     }
 

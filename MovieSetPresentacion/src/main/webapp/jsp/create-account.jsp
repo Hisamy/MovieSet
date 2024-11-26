@@ -15,7 +15,7 @@
         <div class="container">
             <h1>JOIN THE COMMUNITY</h1>
             <p class="subtitle">Welcome to Movieset, create your account</p>    
-            <form class="signup-form" action="<c:url value='/SVCreateAccount'/>" method="POST" >
+            <form class="signup-form" action="<c:url value='/SVCreateAccount'/>" method="POST" enctype="multipart/form-data">
                 <div class="form-group-two">
                     <div class="form-group">
                         <label for="Name">Name</label>
