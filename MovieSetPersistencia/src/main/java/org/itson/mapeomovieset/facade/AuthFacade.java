@@ -7,17 +7,21 @@ import org.itson.mapeomovieset.excepciones.FindException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.itson.adapter.UsuarioAdapter;
 import org.itson.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
+import org.itson.moviesetdtos.UsuarioDTO;
 
 public class AuthFacade implements IAuthFacade {
 
-    IUsuariosDAO usuariosDAO;
+    private final IUsuariosDAO usuariosDAO;
+    private UsuarioAdapter adapter;
 
     public AuthFacade() {
         this.usuariosDAO = new UsuariosDAO();
+        adapter = new UsuarioAdapter();
     }
 
     @Override
@@ -25,13 +29,13 @@ public class AuthFacade implements IAuthFacade {
             String nombre,
             String apellidoPaterno,
             String apellidoMaterno,
-            String correo, 
-            String contrasenia, 
-            String telefono, 
-            String ciudad, 
-            Date fechaNacimiento, 
+            String correo,
+            String contrasenia,
+            String telefono,
+            String ciudad,
+            Date fechaNacimiento,
             String genero) {
-    
+
         validarDatosRegistro(nombre, correo, contrasenia);
 
         // Verificar si el correo ya está registrado
@@ -60,11 +64,12 @@ public class AuthFacade implements IAuthFacade {
     }
 
     @Override
-    public UsuarioEntity iniciarSesion(String correo, String contrasenia) {
+    public UsuarioDTO iniciarSesion(String correo, String contrasenia) {
         try {
             UsuarioEntity usuario = usuariosDAO.buscarUsuarioPorCorreo(correo);
             if (usuario != null && usuario.getContrasenia().equals(contrasenia)) {
-                return usuario;
+                // Convertir el Entity a DTO antes de retornarlo
+                return adapter.usuarioEntityToDTO(usuario);
             } else {
                 System.out.println("Correo o contraseña incorrectos.");
                 return null;

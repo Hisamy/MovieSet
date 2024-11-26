@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author castr
  */
+
 public class FiltroAutenticacion implements Filter {
 
     private static final boolean debug = true;
@@ -33,6 +34,7 @@ public class FiltroAutenticacion implements Filter {
     private static final String[] urlPublicas = {
         "/jsp/createAccount.jsp",
         "/jsp/signIn.jsp",
+        "/jsp/index.jsp",
         "/Login"
     };
 

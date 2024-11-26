@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,26 +13,6 @@
         <div class="container">
             <div class="left-panel">
                 <h1>ENTER YOUR ACCOUNT</h1>
-                <%
-                    String error = request.getParameter("error");
-                    if (error != null) {
-                %>
-                <div class="error-message">
-                    <%
-                        switch (error) {
-                            case "empty":
-                                out.println("Please complete all fields");
-                                break;
-                            case "invalid":
-                                out.println("Incorrect email or password");
-                                break;
-                            case "system":
-                                out.println("System error, please try again later");
-                                break;
-                        }
-                    %>
-                </div>
-                <% }%>
                 <form class="sign-in-form" method="POST" action="${pageContext.request.contextPath}/Login">            <div class="form-group">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" required>

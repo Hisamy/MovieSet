@@ -10,9 +10,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.itson.entidades.UsuarioEntity;
 import org.itson.mapeomovieset.facade.AuthFacade;
 import org.itson.mapeomovieset.facade.IAuthFacade;
+import org.itson.moviesetdtos.UsuarioDTO;
 
 /**
  *
@@ -20,6 +24,15 @@ import org.itson.mapeomovieset.facade.IAuthFacade;
  */
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class SVLogin extends HttpServlet {
+
+    private static final Logger LOGGER = Logger.getLogger(SVLogin.class.getName());
+    private static final String LOGIN_PAGE = "/jsp/sign-in.jsp";
+    private static final String INDEX_PAGE = "/jsp/index.jsp";
+    private final IAuthFacade authFacade;
+
+    public SVLogin() {
+        this.authFacade = new AuthFacade();
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -33,14 +46,7 @@ public class SVLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        // Si ya hay una sesión activa, redirigir a moviedle.jsp
-//        HttpSession session = request.getSession(false);
-//        if (session != null && session.getAttribute("email") != null) {//Falta logica por definir aqui todavia
-//            response.sendRedirect(request.getContextPath() + "/moviedle.jsp");
-//            return;
-//        }
-//        // Si no hay sesión, redirigir al login
-//        response.sendRedirect(request.getContextPath() + "/signIn.jsp");
+
     }
 
     /**
@@ -58,17 +64,65 @@ public class SVLogin extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        System.out.println("Email recibido: " + request.getParameter("email"));
-        System.out.println("Password recibido: " + request.getParameter("password"));
+        try {
+            // Verificación básica de campos vacíos
+            if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
+                setErrorMessage(request, "Por favor complete todos los campos");
+                redirectToLogin(request, response);
+                return;
+            }
 
-        IAuthFacade fachada = new AuthFacade();
+            UsuarioDTO usuarioForm = new UsuarioDTO();
+            usuarioForm.setCorreo(email);
+            usuarioForm.setContrasenia(password);
 
-        UsuarioEntity usuarioEntity = fachada.iniciarSesion(email, password);
-        System.out.println(usuarioEntity.getCorreo());
+            // Intentar autenticar al usuario
+            usuarioForm = authenticateUser(email, password);
 
-        // Redirigir al usuario a la página principal
-        response.sendRedirect(request.getContextPath() + "/jsp/index.jsp");
+            if (usuarioForm == null) {
+                setErrorMessage(request, "Email o contraseña incorrectos");
+                redirectToLogin(request, response);
+                return;
+            }
 
+            // Iniciar sesión
+            initializeUserSession(request, usuarioForm);
+
+            // Redirigir al índice
+            response.sendRedirect(request.getContextPath() + INDEX_PAGE);
+
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error durante el inicio de sesión", e);
+            setErrorMessage(request, "Error del sistema. Por favor intente más tarde");
+            redirectToLogin(request, response);
+        }
+    }
+
+    private UsuarioDTO authenticateUser(String email, String password) {
+        try {
+            return authFacade.iniciarSesion(email, password);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error al autenticar usuario", e);
+            return null;
+        }
+    }
+
+    private void initializeUserSession(HttpServletRequest request, UsuarioDTO usuario) {
+        HttpSession session = request.getSession();
+        session.setAttribute("usuario", usuario);
+        session.setAttribute("userName", usuario.getUsername());
+
+        // Establecer tiempo de expiración de la sesión (30 minutos)
+        session.setMaxInactiveInterval(30 * 60);
+    }
+
+    private void setErrorMessage(HttpServletRequest request, String message) {
+        request.setAttribute("errorMessage", message);
+    }
+
+    private void redirectToLogin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
     }
 
     /**
