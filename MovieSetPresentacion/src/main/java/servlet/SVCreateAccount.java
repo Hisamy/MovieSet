@@ -6,13 +6,16 @@ package servlet;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
@@ -20,6 +23,9 @@ import org.itson.mapeomovieset.facade.CreateAccountFacade;
 import org.itson.mapeomovieset.facade.ICreateAccountFacade;
 import org.itson.moviesetdtos.UsuarioDTO;
 
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100)
 public class SVCreateAccount extends HttpServlet {
 
     private UsuarioDTO usuarioDTO;
@@ -59,7 +65,7 @@ public class SVCreateAccount extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String repeatPassword = request.getParameter("repeat-password");
-            Part avatar = request.getPart(request.getParameter("avatar"));
+            Part avatarPart = request.getPart("avatar");
             String country = request.getParameter("country");
             String birthdateStr = request.getParameter("birthdate");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -69,6 +75,7 @@ public class SVCreateAccount extends HttpServlet {
             if (!password.equals(repeatPassword)) {
                 response.sendRedirect("jsp/create-account.jsp?error=password");
             } else {
+                String avatar = procesarAvatar(avatarPart);
                 //Se guardan en una DTO y se mandan.
                 usuarioDTO = new UsuarioDTO();
                 usuarioDTO.setContrasenia(password);
@@ -79,6 +86,8 @@ public class SVCreateAccount extends HttpServlet {
                 usuarioDTO.setBirthday(birthdate);
                 usuarioDTO.setCountry(country);
                 usuarioDTO.setGender(gender);
+                usuarioDTO.setAvatar(avatar);
+                
                 createAccountFacade = new CreateAccountFacade();
                 createAccountFacade.sendCreateAccountForm(usuarioDTO);
 
@@ -92,6 +101,26 @@ public class SVCreateAccount extends HttpServlet {
             Logger.getLogger(SVCreateAccount.class.getName()).log(Level.SEVERE, null, ex);
             response.sendRedirect("jsp/create-account.jsp?error=general");
         }
+
+    }
+
+    private String procesarAvatar(Part avatar) throws IOException {
+        String uploadPath = getServletContext().getRealPath("") + File.separator + "uploads";
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir(); // Crear directorio si no existe
+        }
+
+    // Obtener el nombre del archivo
+        String avatarFileName = UUID.randomUUID().toString() + "_" + avatar.getSubmittedFileName();
+        String avatarFilePath = uploadPath + File.separator + avatarFileName;
+
+    // Guardar el archivo
+        avatar.write(avatarFilePath);
+
+    // Setear la ruta relativa en UsuarioDTO
+        String path = "uploads/" + avatarFileName;
+        return path;
 
     }
 

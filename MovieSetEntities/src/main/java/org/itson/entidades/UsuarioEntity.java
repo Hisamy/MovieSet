@@ -7,59 +7,67 @@ import org.bson.types.ObjectId;
 public class UsuarioEntity {
 
     private ObjectId id;
-    private String name;
-    private String username;
-    private String lastName;
     private String correo;
+    private String name;
+    private String lastName;
+    private String username;
     private String contrasenia;
-    private String avatar;
-    private String pais;
-    private Date fechaNacimiento;
-    private String genero;
+    private String country;
+    private String gender;
+    private Date birthday;
+    private byte[] avatar;
 
-    public UsuarioEntity(String name, String username, String lastName, String correo, String contrasenia) {
-        this.name = name;
-        this.username = username;
-        this.lastName = lastName;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
-    }
+    
 
     public UsuarioEntity() {
     }
 
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
+    public UsuarioEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, byte[] avatar) {
+        this.correo = correo;
+        this.name = name;
+        this.lastName = lastName;
+        this.username = username;
+        this.contrasenia = contrasenia;
+        this.country = country;
+        this.gender = gender;
+        this.birthday = birthday;
         this.avatar = avatar;
     }
 
+    
+
+    
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
 
     public String getContrasenia() {
         return contrasenia;
@@ -121,9 +129,6 @@ public class UsuarioEntity {
                 + ", correo=" + correo
                 + ", contrasenia=" + contrasenia
                 + ", avatar=" + avatar
-                + ", ciudad=" + pais
-                + ", fechaNacimiento=" + fechaNacimiento
-                + ", genero=" + genero
                 + '}';
     }
 

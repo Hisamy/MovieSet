@@ -48,9 +48,9 @@ public class AuthFacade implements IAuthFacade {
         nuevoUsuario.setName(nombre);
         nuevoUsuario.setCorreo(correo);
         nuevoUsuario.setContrasenia(contrasenia);
-        nuevoUsuario.setPais(ciudad);
-        nuevoUsuario.setFechaNacimiento(fechaNacimiento);
-        nuevoUsuario.setGenero(genero);
+        nuevoUsuario.setBirthday(fechaNacimiento);
+        nuevoUsuario.setCountry(genero);
+        nuevoUsuario.setGender(genero);
 
         try {
             // Intentar agregar el nuevo usuario a la base de datos
