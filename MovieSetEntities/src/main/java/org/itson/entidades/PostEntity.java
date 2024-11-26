@@ -21,6 +21,12 @@ public class PostEntity {
     private Float stars;     
     private boolean anclado;
 
+    public PostEntity(String contenido, Date fechaPublicacion, UsuarioEntity autor) {
+        this.contenido = contenido;
+        this.fechaPublicacion = fechaPublicacion;
+        this.autor = autor;
+    }
+
 
     public String getContenido() {
         return contenido;

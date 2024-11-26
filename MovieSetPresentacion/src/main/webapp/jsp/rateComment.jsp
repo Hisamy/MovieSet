@@ -59,7 +59,7 @@
             </section>
             <section class="comment">
                 <h4>Leave a comment</h4>
-                <form action="#" method="post">
+                <form action="action="<c:url value='/SVCreatePost'/>"" method="post">
                     <textarea name="comment" id="comment" cols="50" rows="5" placeholder="COMMENT..."></textarea>
                     <button type="submit">Post</button>
                 </form>

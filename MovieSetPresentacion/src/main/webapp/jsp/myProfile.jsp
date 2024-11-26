@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +15,7 @@
         <img src="../images/1ef9ec7712c7cc36190c9f6f48b09501.png" alt="Profile" class="profile-image">
         <div class="profile-info">
             <div class="profile-title">MY PROFILE</div>
-            <div class="profile-name">Hatsune Miku</div>
+            <div class="profile-name">${sessionScope.usuario.username}</div>
         </div>
     </header>
 

@@ -21,7 +21,8 @@
                 <c:if test="${not empty sessionScope.usuario}">
                     <a href="${pageContext.request.contextPath}/jsp/index.jsp#films">Films</a>
                     <a href="${pageContext.request.contextPath}/jsp/moviedle.jsp">Moviedle</a>
-                    <a href="${pageContext.request.contextPath}/jsp/myProfile.jsp">Mi Perfil</a>
+                    <a href="${pageContext.request.contextPath}/jsp/myProfile.jsp">
+                        ${sessionScope.usuario.username}</a>
 
                     <%-- Si es admin mostrar panel admin --%>
                     <c:if test="${sessionScope.usuario.rol eq 'admin'}">
@@ -35,6 +36,7 @@
                 <img src="../images/Search.png" alt="search">
                 <input type="search">
             </div>
+
         </nav>
     </header>
 </html>

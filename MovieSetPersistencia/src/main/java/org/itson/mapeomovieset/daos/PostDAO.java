@@ -23,7 +23,7 @@ public class PostDAO implements IPostDAO{
     private final IConexion conexion;
     private MongoCollection<PostEntity> post;
 
-    public PostDAO(IConexion conexion) {
+    public PostDAO() {
         this.conexion = Conexion.getInstance(); 
         MongoDatabase baseDeDatos = conexion.conectar();
         this.post = baseDeDatos.getCollection("Post", PostEntity.class);
