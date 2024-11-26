@@ -16,6 +16,7 @@ public class UsuarioEntity {
     private String pais;
     private Date fechaNacimiento;
     private String genero;
+    private String rol;
 
     public UsuarioEntity(String name, String username, String lastName, String correo, String contrasenia) {
         this.name = name;
@@ -51,6 +52,16 @@ public class UsuarioEntity {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    
 
     public String getAvatar() {
         return avatar;
