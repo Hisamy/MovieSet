@@ -104,7 +104,7 @@ public class SVLogin extends HttpServlet {
 
     private void initializeUserSession(HttpServletRequest request, UsuarioDTO usuario) {
         HttpSession session = request.getSession();
-        session.setAttribute("usuario", usuario);
+            session.setAttribute("usuario", usuario);
 //        session.setAttribute("rol", usuario.getRol());
         System.out.println("Este es el nombre " + usuario.getUsername());
         System.out.println("Este es el rol " + usuario.getRol());

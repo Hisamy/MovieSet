@@ -29,35 +29,47 @@ public class SVCreatePost extends HttpServlet {
 
     private ICreatePostFacade createPostFacade;
     private PostDTO postDTO;
-    private UsuarioDTO autor;
 
     public SVCreatePost() {
         createPostFacade = new CreatePostFacade();
         postDTO = new PostDTO();
+
     }
 
-    public void procesarSolicitud(HttpServletRequest request){
+    public void procesarSolicitud(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        autor = (UsuarioDTO) session.getAttribute("usuario");
+        UsuarioDTO usuarioSesion = (UsuarioDTO) session.getAttribute("usuario");
 
-   
+        if (usuarioSesion != null) {
+            postDTO.setAutor(usuarioSesion);
+            session.setAttribute("autor", usuarioSesion);
+            System.out.println("El autor del post es : " + usuarioSesion.getUsername());
+            System.out.println("Esto recolecta como autor por parte del post : " + postDTO.getAutor());
+        }
+
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        procesarSolicitud(request);
+
+        if (postDTO.getAutor() == null) {
+            response.sendRedirect("jsp/rateComment.jsp?error=general");
+            return;
+        }
+
         LocalDateTime now = LocalDateTime.now();
         String comment = request.getParameter("comment");
         Date fechaPublicacion = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
 
-        
-        postDTO.setAutor(autor);
         postDTO.setContenido(comment);
         postDTO.setFechaPublicacion(fechaPublicacion);
-        
+
         try {
             createPostFacade.sendPost(postDTO);
-            response.sendRedirect("jsp/rateComment.jsp?success=general");
+            response.sendRedirect("jsp/rateComment.jsp?success=true");
         } catch (PersistenciaException ex) {
             response.sendRedirect("jsp/rateComment.jsp?error=general");
         }
