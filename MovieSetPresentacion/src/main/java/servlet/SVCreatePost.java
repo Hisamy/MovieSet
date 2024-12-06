@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import org.itson.mapeomovieset.excepciones.FindException;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;
 import org.itson.mapeomovieset.facade.CreatePostFacade;
 import org.itson.mapeomovieset.facade.ICreatePostFacade;
@@ -54,25 +53,6 @@ public class SVCreatePost extends HttpServlet {
             throws ServletException, IOException {
 
         procesarSolicitud(request);
-
-        if (postDTO.getAutor() == null) {
-            response.sendRedirect("jsp/rateComment.jsp?error=general");
-            return;
-        }
-
-        LocalDateTime now = LocalDateTime.now();
-        String comment = request.getParameter("comment");
-        Date fechaPublicacion = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
-
-        postDTO.setContenido(comment);
-        postDTO.setFechaPublicacion(fechaPublicacion);
-
-        try {
-            createPostFacade.sendPost(postDTO);
-            response.sendRedirect("jsp/rateComment.jsp?success=true");
-        } catch (PersistenciaException ex) {
-            response.sendRedirect("jsp/rateComment.jsp?error=general");
-        }
 
     }
 
