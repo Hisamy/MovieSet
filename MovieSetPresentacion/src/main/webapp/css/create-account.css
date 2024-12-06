@@ -14,6 +14,12 @@
     padding: 20px;
   }
   
+  .form-group-two{
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+  }
+  
   .container {
     width: 100%;
     max-width: 450px;
@@ -51,8 +57,12 @@
     color: #a8b2c1;
     font-size: 0.95rem;
   }
-  
-  input {
+  .gender{
+      display: flex;
+      flex-direction: row;
+      font-size: 1em
+  }
+  input, select {
     width: 100%;
     padding: 0.8rem;
     border: none;
@@ -84,6 +94,8 @@
   .create-account-btn:hover {
     background: #7a3131;
   }
+  
+  
   
   @media (max-width: 480px) {
     .container {

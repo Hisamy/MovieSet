@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+
 <html lang="en">
 
     <head>
@@ -10,8 +12,7 @@
     </head>
 
     <body>
-        <jsp:include page="header.jsp" />
-
+        <jsp:include page="fragmentos/header.jsp" />
         <main>
             <section class="hero">
                 <img src="../images/a-trip-to-the-moon.png" alt="A trip to the moon" class="polaroid">
@@ -26,10 +27,19 @@
                     <button class="carousel-button left">&#8249;</button>
                     <div class="movie-list">
                         <div class="movie-item">
-                            <a href="rate-comment.html">
-                                <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/249/2024/09/16145201/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK-scaled.jpg" alt="Fight Club">
-                                <p>Fight Club</p>
-                            </a>  
+                            <c:choose>
+                                <c:when test="${not empty sessionScope.usuario}">
+                                    <a href="rateComment.jsp">
+                                        <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/249/2024/09/16145201/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK-scaled.jpg" alt="Fight Club">
+                                        <p>Fight Club</p>
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="https://s3.amazonaws.com/nightjarprod/content/uploads/sites/249/2024/09/16145201/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK-scaled.jpg" alt="Fight Club">
+                                    <p>Fight Club</p>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                         <div class="movie-item">
                             <img src="https://image.tmdb.org/t/p/original/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg" alt="Barbie">
@@ -71,8 +81,8 @@
                             <p>Amarte duele</p>
                         </div>
                         <div class="movie-item">
-                            <img src="https://m.media-amazon.com/images/M/MV5BMzdmYzZkODEtMWFmYy00YTk3LWE0ZTEtMjcwOTViZmRiNGUwXkEyXkFqcGc@._V1_.jpg" alt="Una película de huevos">
-                            <p>Una película de huevos</p>
+                            <img src="https://m.media-amazon.com/images/M/MV5BMzdmYzZkODEtMWFmYy00YTk3LWE0ZTEtMjcwOTViZmRiNGUwXkEyXkFqcGc@._V1_.jpg" alt="Una pelÃ­cula de huevos">
+                            <p>Una pelÃ­cula de huevos</p>
                         </div>
                         <div class="movie-item">
                             <img src="../images/Leyenda_Nahuala.webp" alt="La leyenda de la Nahuala">
