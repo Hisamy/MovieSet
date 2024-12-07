@@ -13,5 +13,5 @@ import org.itson.moviesetdtos.PostDTO;
  * @author hisam
  */
 public interface ICreatePostFacade {
-    void sendPost(PostDTO postDTO) throws IOException, PersistenciaException;
+    Boolean sendPost(PostDTO postDTO) throws IOException, PersistenciaException;
 }

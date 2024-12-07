@@ -16,6 +16,7 @@ public class PostDTO {
     private Date fechaPublicacion;
     private UsuarioDTO autor;
     private Float stars;
+    private Boolean Anclado;
 
     public PostDTO() {
     }
@@ -51,6 +52,15 @@ public class PostDTO {
     public void setStars(Float stars) {
         this.stars = stars;
     }
+
+    public Boolean getAnclado() {
+        return Anclado;
+    }
+
+    public void setAnclado(Boolean Anclado) {
+        this.Anclado = Anclado;
+    }
+    
     
     
 }

@@ -15,19 +15,26 @@ import org.itson.moviesetdtos.PostDTO;
  *
  * @author hisam
  */
-public class CreatePostFacade implements ICreatePostFacade{
+public class CreatePostFacade implements ICreatePostFacade {
 
     private IPostDAO postDAO;
     private PostAdapter adapter;
+
     public CreatePostFacade() {
         postDAO = new PostDAO();
         adapter = new PostAdapter();
     }
 
-    
     @Override
-    public void sendPost(PostDTO postDTO) throws IOException, PersistenciaException {
-        postDAO.agregarComentario(adapter.DTOToEntity(postDTO));
+    public Boolean sendPost(PostDTO postDTO) throws IOException, PersistenciaException {
+        try {
+            postDAO.agregarComentario(adapter.DTOToEntity(postDTO));
+            return true;
+        }
+        catch(PersistenciaException e){
+            return false;
+        }
+
     }
-    
+
 }

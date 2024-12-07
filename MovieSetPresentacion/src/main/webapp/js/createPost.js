@@ -38,7 +38,7 @@ function createPost() {
 }
 
 const init = () => {
-    btnSignup.onclick = () => {
+    btnPost.onclick = () => {
         createPost();
     };
 
