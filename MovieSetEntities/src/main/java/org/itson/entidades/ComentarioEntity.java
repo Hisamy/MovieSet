@@ -12,6 +12,7 @@ public class ComentarioEntity {
 
     private String contenido;
     private UsuarioEntity autor;
+    private String postId;
 
     public ComentarioEntity() {
         super();
@@ -32,6 +33,16 @@ public class ComentarioEntity {
     public void setAutor(UsuarioEntity autor) {
         this.autor = autor;
     }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+    
+    
     
     
 

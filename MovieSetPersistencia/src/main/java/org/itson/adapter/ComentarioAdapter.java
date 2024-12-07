@@ -26,7 +26,9 @@ public class ComentarioAdapter {
     public ComentarioDTO entityToDTO(ComentarioEntity entity) {
         UsuarioDTO usuarioDTO = usuarioAdapter.usuarioEntityToDTO(entity.getAutor());
         String contenido = entity.getContenido();
+        String postId = entity.getPostId();
         ComentarioDTO dto = new ComentarioDTO(contenido, usuarioDTO);
+        dto.setPostId(postId);
         return dto;
     }
     
@@ -35,8 +37,10 @@ public class ComentarioAdapter {
         try {
             UsuarioEntity usuarioEntity = usuarioAdapter.usuarioDTOToEntity(dto.getAutor());
             String contenido = dto.getContenido();
+            String postId = dto.getPostId();
             entity.setAutor(usuarioEntity);
             entity.setContenido(contenido);
+            entity.setPostId(postId);
         } catch (IOException ex) {
             Logger.getLogger(ComentarioAdapter.class.getName()).log(Level.SEVERE, null, ex);
         }

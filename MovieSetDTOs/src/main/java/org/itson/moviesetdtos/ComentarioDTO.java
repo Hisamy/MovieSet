@@ -13,6 +13,7 @@ public class ComentarioDTO {
     private String id;
     private String contenido;
     private UsuarioDTO autor;
+    private String postId;
 
     public ComentarioDTO() {
         super();
@@ -45,6 +46,14 @@ public class ComentarioDTO {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
     
     
