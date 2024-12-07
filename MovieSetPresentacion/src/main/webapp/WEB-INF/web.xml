@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SVShowPosts</servlet-name>
-        <url-pattern>/servlet/SVShowPosts</url-pattern>
+        <url-pattern>/SVShowPosts</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SVCreateAccount</servlet-name>

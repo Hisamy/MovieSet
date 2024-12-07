@@ -12,6 +12,10 @@ import java.util.Date;
  */
 public class AdministradorEntity extends UsuarioEntity {
 
+    public AdministradorEntity() {
+    }
+
+    
     public AdministradorEntity(String correo, String name, String lastName, String username, String contrasenia, String country, String gender, Date birthday, String avatar) {
 
     }
