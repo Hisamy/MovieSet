@@ -8,10 +8,11 @@ import java.util.Date;
 
 /**
  *
- * @author
+ * @author 
  */
 public class PostDTO {
 
+    private String id;
     private String contenido;
     private Date fechaPublicacion;
     private UsuarioDTO autor;
@@ -19,6 +20,10 @@ public class PostDTO {
     private Boolean Anclado;
 
     public PostDTO() {
+    }
+
+    public PostDTO(String id) {
+        this.id = id;
     }
 
     public String getContenido() {
@@ -60,7 +65,9 @@ public class PostDTO {
     public void setAnclado(Boolean Anclado) {
         this.Anclado = Anclado;
     }
-    
-    
-    
+
+    public String getId() {
+        return id;
+    }
+
 }

@@ -14,6 +14,10 @@
         <servlet-name>SVCreatePost</servlet-name>
         <servlet-class>servlet.SVCreatePost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVDeletePost</servlet-name>
+        <servlet-class>servlet.SVDeletePost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVCreateAccount</servlet-name>
         <url-pattern>/SVCreateAccount</url-pattern>
@@ -21,6 +25,10 @@
     <servlet-mapping>
         <servlet-name>SVCreatePost</servlet-name>
         <url-pattern>/SVCreatePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVDeletePost</servlet-name>
+        <url-pattern>/SVDeletePost</url-pattern>
     </servlet-mapping>
     <error-page>
         <error-code>404</error-code>

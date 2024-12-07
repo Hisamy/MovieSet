@@ -7,18 +7,21 @@ package org.itson.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
  * @author castr
  */
 public class PostEntity {
+
+    private ObjectId idPost;
     private String contenido;
     private ArrayList<ComentarioEntity> comentario;
     private Date fechaPublicacion;
     private Date fechaModificacion;
     private UsuarioEntity autor;
-    private Float stars;     
+    private Float stars;
     private boolean anclado;
 
     public PostEntity(String contenido, Date fechaPublicacion, UsuarioEntity autor) {
@@ -26,7 +29,6 @@ public class PostEntity {
         this.fechaPublicacion = fechaPublicacion;
         this.autor = autor;
     }
-
 
     public String getContenido() {
         return contenido;
@@ -51,7 +53,7 @@ public class PostEntity {
     public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
-    
+
     public UsuarioEntity getAutor() {
         return autor;
     }
@@ -76,7 +78,6 @@ public class PostEntity {
         this.stars = stars;
     }
 
-
     public boolean isAnclado() {
         return anclado;
     }
@@ -84,7 +85,13 @@ public class PostEntity {
     public void setAnclado(boolean anclado) {
         this.anclado = anclado;
     }
- 
-    
-    
+
+    public ObjectId getIdPost() {
+        return idPost;
+    }
+
+    public void setIdPost(ObjectId idPost) {
+        this.idPost = idPost;
+    }
+
 }

@@ -13,5 +13,8 @@ import org.itson.moviesetdtos.PostDTO;
  * @author hisam
  */
 public interface ICreatePostFacade {
+
     Boolean sendPost(PostDTO postDTO) throws IOException, PersistenciaException;
+
+    boolean deletePost(String id) throws IOException, PersistenciaException;
 }

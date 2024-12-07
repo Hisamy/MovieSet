@@ -7,7 +7,10 @@ package org.itson.mapeomovieset.daos;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.InsertOneResult;
+import org.bson.types.ObjectId;
 import org.itson.entidades.PostEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
 import org.itson.mapeomovieset.conexion.IConexion;
@@ -18,17 +21,17 @@ import org.itson.mapeomovieset.excepciones.PersistenciaException;
  *
  * @author hisam
  */
-public class PostDAO implements IPostDAO{
+public class PostDAO implements IPostDAO {
 
     private final IConexion conexion;
     private MongoCollection<PostEntity> post;
 
     public PostDAO() {
-        this.conexion = Conexion.getInstance(); 
+        this.conexion = Conexion.getInstance();
         MongoDatabase baseDeDatos = conexion.conectar();
         this.post = baseDeDatos.getCollection("Post", PostEntity.class);
     }
-    
+
     @Override
     public boolean agregarComentario(PostEntity post) throws PersistenciaException {
         try {
@@ -38,5 +41,15 @@ public class PostDAO implements IPostDAO{
             throw new PersistenciaException("Error al crear Post");
         }
     }
-    
+
+    @Override
+    public boolean eliminarComentario(ObjectId idPost) throws PersistenciaException {
+        try {
+            DeleteResult result = post.deleteOne(Filters.eq("_id", idPost));
+            return result.wasAcknowledged();
+        } catch (MongoException ex) {
+            throw new PersistenciaException("Error al eliminar Post");
+        }
+    }
+
 }

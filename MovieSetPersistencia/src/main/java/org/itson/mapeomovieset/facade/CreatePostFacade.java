@@ -5,6 +5,9 @@
 package org.itson.mapeomovieset.facade;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.bson.types.ObjectId;
 import org.itson.adapter.PostAdapter;
 import org.itson.mapeomovieset.daos.IPostDAO;
 import org.itson.mapeomovieset.daos.PostDAO;
@@ -30,11 +33,21 @@ public class CreatePostFacade implements ICreatePostFacade {
         try {
             postDAO.agregarComentario(adapter.DTOToEntity(postDTO));
             return true;
-        }
-        catch(PersistenciaException e){
+        } catch (PersistenciaException e) {
             return false;
         }
+    }
 
+    @Override
+    public boolean deletePost(String id) throws IOException, PersistenciaException {
+        try {
+            ObjectId idPost = new ObjectId(id);
+            postDAO.eliminarComentario(idPost);
+            return true;
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(CreatePostFacade.class.getName()).log(Level.SEVERE, "Error al eliminar el post", ex);
+            return false;
+        }
     }
 
 }
