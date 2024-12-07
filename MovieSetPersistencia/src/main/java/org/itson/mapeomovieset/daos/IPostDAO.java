@@ -12,9 +12,9 @@ import org.itson.mapeomovieset.excepciones.PersistenciaException;
  */
 public interface IPostDAO {
 
-    boolean agregarComentario(PostEntity post) throws PersistenciaException;
+    boolean agregarPost(PostEntity post) throws PersistenciaException;
 
-    boolean eliminarComentario(ObjectId idPost) throws PersistenciaException;
+    boolean eliminarPost(ObjectId idPost) throws PersistenciaException;
     
-    List<PostEntity> consultarPost() throws FindException;
+    List<PostEntity> consultarPosts() throws FindException;
 }

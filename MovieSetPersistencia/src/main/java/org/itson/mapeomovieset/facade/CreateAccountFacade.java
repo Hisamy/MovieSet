@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.itson.adapter.UsuarioAdapter;
-import org.itson.mapeomovieset.conexion.Conexion;
-import org.itson.mapeomovieset.conexion.IConexion;
 import org.itson.mapeomovieset.daos.IUsuariosDAO;
 import org.itson.mapeomovieset.daos.UsuariosDAO;
 import org.itson.mapeomovieset.excepciones.PersistenciaException;

@@ -31,7 +31,7 @@ public class CreatePostFacade implements ICreatePostFacade {
     @Override
     public Boolean sendPost(PostDTO postDTO) throws IOException, PersistenciaException {
         try {
-            postDAO.agregarComentario(adapter.DTOToEntity(postDTO));
+            postDAO.agregarPost(adapter.DTOToEntity(postDTO));
             return true;
         } catch (PersistenciaException e) {
             return false;
@@ -42,7 +42,7 @@ public class CreatePostFacade implements ICreatePostFacade {
     public boolean deletePost(String id) throws IOException, PersistenciaException {
         try {
             ObjectId idPost = new ObjectId(id);
-            postDAO.eliminarComentario(idPost);
+            postDAO.eliminarPost(idPost);
             return true;
         } catch (PersistenciaException ex) {
             Logger.getLogger(CreatePostFacade.class.getName()).log(Level.SEVERE, "Error al eliminar el post", ex);

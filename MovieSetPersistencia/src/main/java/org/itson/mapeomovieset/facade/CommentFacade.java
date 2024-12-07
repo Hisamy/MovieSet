@@ -18,11 +18,11 @@ public class CommentFacade implements ICommentFacade {
     private ComentariosDAO comentariosDAO;
 
     @Override
-    public boolean agregarComentario(ComentarioEntity comentario) {
+    public boolean agregarComentario(ComentarioEntity comentario, String postId) {
         try {
-            return comentariosDAO.agregarComentario(comentario);
+            return comentariosDAO.agregarComentario(comentario, postId);
         } catch (Exception ex) {
-            Logger.getLogger(CommentFacade.class.getName()).log(Level.SEVERE, "Error al agregar película", ex);
+            Logger.getLogger(CommentFacade.class.getName()).log(Level.SEVERE, "Error al agregar comentario", ex);
             return false;
         }
     }

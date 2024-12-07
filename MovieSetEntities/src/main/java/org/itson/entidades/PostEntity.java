@@ -15,7 +15,7 @@ import java.util.List;
 public class PostEntity {
 
     private String contenido;
-    private ArrayList<ComentarioEntity> comentario;
+    private List<ComentarioEntity> comentarios;
     private Date fechaPublicacion;
     private Date fechaModificacion;
     private UsuarioEntity autor;
@@ -26,6 +26,7 @@ public class PostEntity {
         this.contenido = contenido;
         this.fechaPublicacion = fechaPublicacion;
         this.autor = autor;
+        this.comentarios = new ArrayList<>();
     }
 
     public String getContenido() {
@@ -60,12 +61,19 @@ public class PostEntity {
         this.autor = autor;
     }
 
-    public List<ComentarioEntity> getComentario() {
-        return comentario;
+    public List<ComentarioEntity> getComentarios() {
+        return comentarios;
     }
 
-    public void setComentario(ArrayList<ComentarioEntity> comentario) {
-        this.comentario = comentario;
+    public void setComentarios(List<ComentarioEntity> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public void addComentario(ComentarioEntity comentario) {
+        if (this.comentarios == null) {
+            this.comentarios = new ArrayList<>();
+        }
+        this.comentarios.add(comentario);
     }
 
     public Float getStars() {

@@ -29,7 +29,7 @@ public class PostFacade implements IPostFacade {
 
     @Override
     public List<PostDTO> consultarPost() throws FindException {
-        return adapter.entityListToDTOList(postDAO.consultarPost());
+        return adapter.entityListToDTOList(postDAO.consultarPosts());
         
     }
 

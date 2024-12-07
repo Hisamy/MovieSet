@@ -13,6 +13,6 @@ import org.itson.mapeomovieset.excepciones.PersistenciaException;
  */
 public interface IComentariosDAO {
 
-    boolean agregarComentario(ComentarioEntity comentario) throws PersistenciaException;
+    public boolean agregarComentario(ComentarioEntity comentario, String postId) throws PersistenciaException;
     
 }

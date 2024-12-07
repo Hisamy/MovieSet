@@ -35,7 +35,7 @@ public class PostDAO implements IPostDAO {
     }
 
     @Override
-    public boolean agregarComentario(PostEntity post) throws PersistenciaException {
+    public boolean agregarPost(PostEntity post) throws PersistenciaException {
         try {
             InsertOneResult result = this.post.insertOne(post);
             return result.wasAcknowledged();
@@ -45,7 +45,7 @@ public class PostDAO implements IPostDAO {
     }
 
     @Override
-    public boolean eliminarComentario(ObjectId idPost) throws PersistenciaException {
+    public boolean eliminarPost(ObjectId idPost) throws PersistenciaException {
         try {
             DeleteResult result = post.deleteOne(Filters.eq("_id", idPost));
             return result.wasAcknowledged();
@@ -55,7 +55,7 @@ public class PostDAO implements IPostDAO {
     }
 
     @Override
-    public List<PostEntity> consultarPost() throws FindException {
+    public List<PostEntity> consultarPosts() throws FindException {
         try {
             return post.find().into(new ArrayList<>());
         } catch (MongoException ex) {

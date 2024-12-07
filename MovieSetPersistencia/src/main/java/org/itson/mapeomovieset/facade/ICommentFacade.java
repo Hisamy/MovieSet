@@ -12,5 +12,5 @@ import org.itson.entidades.ComentarioEntity;
  */
 public interface ICommentFacade {
 
-    public boolean agregarComentario(ComentarioEntity comentario);
+    public boolean agregarComentario(ComentarioEntity comentario, String postId);
 }
