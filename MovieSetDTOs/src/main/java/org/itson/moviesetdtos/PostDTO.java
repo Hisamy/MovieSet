@@ -5,6 +5,7 @@
 package org.itson.moviesetdtos;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -18,6 +19,7 @@ public class PostDTO {
     private UsuarioDTO autor;
     private Float stars;
     private Boolean Anclado;
+    private List<ComentarioDTO> comentarios;
 
     public PostDTO() {
     }
@@ -68,6 +70,14 @@ public class PostDTO {
 
     public String getId() {
         return id;
+    }
+
+    public List<ComentarioDTO> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioDTO> comentarios) {
+        this.comentarios = comentarios;
     }
 
 }
