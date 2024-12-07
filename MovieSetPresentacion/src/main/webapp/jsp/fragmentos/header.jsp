@@ -23,6 +23,7 @@
                     <a href="${pageContext.request.contextPath}/jsp/moviedle.jsp">Moviedle</a>
                     <a href="${pageContext.request.contextPath}/jsp/myProfile.jsp">
                         <c:out value="${sessionScope.usuario.username}" /></a>
+                    <a href="${pageContext.request.contextPath}/jsp/comentarios.jsp">Comentarios</a>
 
                     <%-- Si es admin mostrar panel admin --%>
                     <c:if test="${sessionScope.usuario.rol eq 'admin'}">

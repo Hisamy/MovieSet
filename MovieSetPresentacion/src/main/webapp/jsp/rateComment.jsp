@@ -11,6 +11,8 @@
                 <link rel="stylesheet" href="../css/rate-comment.css">
                 <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="../js/createPost.js"></script>
+                
             </head>
 
             <body>
