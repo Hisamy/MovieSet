@@ -44,7 +44,10 @@ body {
     margin-bottom: 15px;
     position: relative;
 }
-
+comment-section{
+    display: flex;
+    flex-direction: row;
+}
 .comment-header {
     display: flex;
     justify-content: space-between;
@@ -121,7 +124,9 @@ body {
 .make-post {
     background-color: var(--comment-bg);
     border-radius: 12px;
+    width: 180px;
     padding: 20px;
+    align-items: center;
 }
 
 .make-post h2 {
@@ -193,4 +198,8 @@ nav {
     height: 2rem;
     pointer-events: none;
 
+}
+.movie-poster{
+    width: 140px;
+    height: 200px;
 }

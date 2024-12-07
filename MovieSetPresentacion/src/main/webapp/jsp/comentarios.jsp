@@ -12,8 +12,9 @@
         <jsp:include page="fragmentos/header.jsp" />
         <main>
             <div class="main-content">
-                <div class="comment-section">
-                    <h2 class="section-title">TOP COMMENTS</h2>
+                <section class="comment-section">
+                    <div class="section-posts">
+                        <h2 class="section-title">TOP COMMENTS</h2>
                     <div class="comment">
                         <div class="comment-header">
                             <div class="comment-text">Barbie</div>
@@ -34,6 +35,7 @@
                             <img src="../images/white-star.png" alt="white-star">
                         </div>
                     </div>
+                    </div>
                     <div class="make-post">
                         <h2>MAKE A POST</h2>
                         <div class="movie-posters">
@@ -42,7 +44,7 @@
                             <img src="../images/Leyenda_Nahuala.webp" alt="Movie 3" class="movie-poster">
                         </div>
                     </div>
-                </div>
+                </section>
         </main>
     </body>
 </html>
