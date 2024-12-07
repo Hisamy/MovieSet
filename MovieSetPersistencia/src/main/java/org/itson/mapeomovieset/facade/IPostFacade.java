@@ -4,7 +4,10 @@
  */
 package org.itson.mapeomovieset.facade;
 
+import java.util.List;
 import org.itson.entidades.PostEntity;
+import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.moviesetdtos.PostDTO;
 
 /**
  *
@@ -12,5 +15,6 @@ import org.itson.entidades.PostEntity;
  */
 public interface IPostFacade {
 
-    public boolean agregarComentario(PostEntity postEntity);
+    List<PostDTO> consultarPost() throws FindException;
+
 }

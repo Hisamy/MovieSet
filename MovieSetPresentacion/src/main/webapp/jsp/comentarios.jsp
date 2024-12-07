@@ -7,6 +7,7 @@
         <title>Opinions</title>
         <link rel="stylesheet" href="../css/comentarios.css">
         <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+        <script src="path/to/posts.js"></script>
     </head>
     <body>
         <jsp:include page="fragmentos/header.jsp" />
@@ -15,26 +16,7 @@
                 <section class="comment-section">
                     <div class="section-posts">
                         <h2 class="section-title">TOP COMMENTS</h2>
-                    <div class="comment">
-                        <div class="comment-header">
-                            <div class="comment-text">Barbie</div>
-                            <div class="comment-menu">
-                                <button class="menu-dots">⋮</button>
-                                <div class="menu-dropdown">
-                                    <button class="menu-item">pin</button>
-                                    <button class="menu-item">delete</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-subtext">s(he's) bro(ken)</div>
-                        <div class="stars">
-                            <img src="../images/yellow-star.png" alt="yellow-star">
-                            <img src="../images/yellow-star.png" alt="yellow-star">
-                            <img src="../images/yellow-star.png" alt="yellow-star">
-                            <img src="../images/yellow-star.png" alt="yellow-star">
-                            <img src="../images/white-star.png" alt="white-star">
-                        </div>
-                    </div>
+                        <!-- Posts will be dynamically inserted here by JavaScript -->
                     </div>
                     <div class="make-post">
                         <h2>MAKE A POST</h2>
@@ -45,6 +27,7 @@
                         </div>
                     </div>
                 </section>
+            </div>
         </main>
     </body>
 </html>

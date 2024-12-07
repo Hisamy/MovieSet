@@ -10,6 +10,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.InsertOneResult;
+import java.util.ArrayList;
+import java.util.List;
 import org.bson.types.ObjectId;
 import org.itson.entidades.PostEntity;
 import org.itson.mapeomovieset.conexion.Conexion;
@@ -49,6 +51,15 @@ public class PostDAO implements IPostDAO {
             return result.wasAcknowledged();
         } catch (MongoException ex) {
             throw new PersistenciaException("Error al eliminar Post");
+        }
+    }
+
+    @Override
+    public List<PostEntity> consultarPost() throws FindException {
+        try {
+            return post.find().into(new ArrayList<>());
+        } catch (MongoException ex) {
+            throw new FindException("Error al consultar los posts", ex);
         }
     }
 

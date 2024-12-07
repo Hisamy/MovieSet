@@ -4,10 +4,12 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.itson.entidades.PostEntity;
+import java.util.ArrayList;
+import java.util.List;
+import org.itson.adapter.PostAdapter;
 import org.itson.mapeomovieset.daos.PostDAO;
+import org.itson.mapeomovieset.excepciones.FindException;
+import org.itson.moviesetdtos.PostDTO;
 
 /**
  *
@@ -16,16 +18,19 @@ import org.itson.mapeomovieset.daos.PostDAO;
 public class PostFacade implements IPostFacade {
 
     private PostDAO postDAO;
+    private PostAdapter adapter;
+
+    public PostFacade() {
+        this.postDAO = new PostDAO();
+        this.adapter = new PostAdapter();
+    }
+    
+    
 
     @Override
-    public boolean agregarComentario(PostEntity postEntity) {
-        try {
-            return postDAO.agregarComentario(postEntity);
-        } catch (Exception ex) {
-            Logger.getLogger(PostFacade.class.getName()).log(Level.SEVERE, "Error al agregar película", ex);
-            return false;
-        }
-
+    public List<PostDTO> consultarPost() throws FindException {
+        return adapter.entityListToDTOList(postDAO.consultarPost());
+        
     }
 
 }
