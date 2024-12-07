@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const postsContainer = document.querySelector('.section-posts');
 
     function fetchPosts() {
-        fetch('../SVShowMovies')
+        fetch('../SVShowPosts')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

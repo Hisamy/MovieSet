@@ -7,7 +7,7 @@
         <title>Opinions</title>
         <link rel="stylesheet" href="../css/comentarios.css">
         <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
-        <script src="path/to/posts.js"></script>
+        <script src="../js/showPosts.js"></script>
     </head>
     <body>
         <jsp:include page="fragmentos/header.jsp" />

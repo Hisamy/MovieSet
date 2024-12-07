@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-    <servlet-mapping>
-        <servlet-name>SVShowMovies</servlet-name>
-        <url-pattern>/SVShowMovies</url-pattern>
-    </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
+    <servlet>
+        <servlet-name>SVShowPosts</servlet-name>
+        <servlet-class>servlet.SVShowPosts</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>SVCreateAccount</servlet-name>
         <servlet-class>servlet.SVCreateAccount</servlet-class>
@@ -21,10 +16,10 @@
         <servlet-name>SVDeletePost</servlet-name>
         <servlet-class>servlet.SVDeletePost</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>SVShowMovies</servlet-name>
-        <servlet-class>servlet.SVShowMovies</servlet-class>
-    </servlet>
+    <servlet-mapping>
+        <servlet-name>SVShowPosts</servlet-name>
+        <url-pattern>/servlet/SVShowPosts</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SVCreateAccount</servlet-name>
         <url-pattern>/SVCreateAccount</url-pattern>
@@ -37,6 +32,11 @@
         <servlet-name>SVDeletePost</servlet-name>
         <url-pattern>/SVDeletePost</url-pattern>
     </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
     <error-page>
         <error-code>404</error-code>
         <location>/error/error404.jsp</location>

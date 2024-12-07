@@ -20,7 +20,7 @@ import org.itson.moviesetdtos.PostDTO;
  *
  * @author hisam
  */
-public class SVShowMovies extends HttpServlet {
+public class SVShowPosts extends HttpServlet {
  private PostFacade postFacade;
 
     public void init() throws ServletException {
