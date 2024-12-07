@@ -7,7 +7,6 @@ package org.itson.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.bson.types.ObjectId;
 
 /**
  *
@@ -15,7 +14,6 @@ import org.bson.types.ObjectId;
  */
 public class PostEntity {
 
-    private ObjectId idPost;
     private String contenido;
     private ArrayList<ComentarioEntity> comentario;
     private Date fechaPublicacion;
@@ -84,14 +82,6 @@ public class PostEntity {
 
     public void setAnclado(boolean anclado) {
         this.anclado = anclado;
-    }
-
-    public ObjectId getIdPost() {
-        return idPost;
-    }
-
-    public void setIdPost(ObjectId idPost) {
-        this.idPost = idPost;
     }
 
 }
