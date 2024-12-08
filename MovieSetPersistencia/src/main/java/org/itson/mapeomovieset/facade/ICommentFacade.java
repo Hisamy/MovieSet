@@ -4,7 +4,7 @@
  */
 package org.itson.mapeomovieset.facade;
 
-import org.itson.entidades.ComentarioEntity;
+import org.itson.moviesetdtos.ComentarioDTO;
 
 /**
  *
@@ -12,5 +12,5 @@ import org.itson.entidades.ComentarioEntity;
  */
 public interface ICommentFacade {
 
-    public boolean agregarComentario(ComentarioEntity comentario, String postId);
+    public boolean agregarComentario(ComentarioDTO comentario, String postId);
 }

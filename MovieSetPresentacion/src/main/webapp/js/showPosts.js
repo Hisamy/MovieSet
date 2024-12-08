@@ -71,6 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         postDiv.appendChild(headerDiv);
         postDiv.appendChild(contentDiv);
         postDiv.appendChild(starsDiv);
+        
+        createCommentSection(postDiv);
+
+        // Fetch and display the comments (replace this with your actual comments data)
+        const sampleComments = [
+            {author: 'User 1', text: 'Great post!'},
+            {author: 'User 2', text: 'I agree, this is very informative.'},
+            {author: 'User 3', text: 'Interesting perspective!'}
+        ];
+        showComments(postDiv, sampleComments);
 
         return postDiv;
     }
