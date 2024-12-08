@@ -10,6 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../js/showPosts.js"></script>
         <script src="../js/deletePost.js"></script>
+        <script src="../js/pinPost.js"></script>
     </head>
     <body>
         <jsp:include page="fragmentos/header.jsp" />

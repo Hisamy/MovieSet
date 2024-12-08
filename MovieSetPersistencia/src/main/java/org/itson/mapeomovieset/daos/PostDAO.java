@@ -63,4 +63,23 @@ public class PostDAO implements IPostDAO {
         }
     }
 
+    @Override
+    public PostEntity consultarPostPorId(String postId) throws FindException {
+        try {
+            return post.find(Filters.eq("_id", new ObjectId(postId))).first();
+        } catch (MongoException ex) {
+            throw new FindException("Error al consultar el post", ex);
+        }
+    }
+
+    @Override
+    public void actualizarPost(PostEntity posts) throws FindException {
+        try {
+            post.replaceOne(Filters.eq("_id", posts.getId()), posts);
+        } catch (MongoException ex) {
+            throw new FindException("Error al actualizar el post", ex);
+        }
+    }
+    
+
 }

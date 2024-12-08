@@ -15,6 +15,10 @@ public interface IPostDAO {
     boolean agregarPost(PostEntity post) throws PersistenciaException;
 
     boolean eliminarPost(ObjectId idPost) throws PersistenciaException;
-    
+
     List<PostEntity> consultarPosts() throws FindException;
+
+    PostEntity consultarPostPorId(String postId) throws FindException;
+
+    void actualizarPost(PostEntity posts) throws FindException;
 }

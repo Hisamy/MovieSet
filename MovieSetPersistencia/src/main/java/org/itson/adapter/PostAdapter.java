@@ -32,6 +32,7 @@ public class PostAdapter {
         postDTO.setAutor(usuarioAdapter.usuarioEntityToDTO(postEntity.getAutor()));
         postDTO.setContenido(postEntity.getContenido());
         postDTO.setFechaPublicacion(postEntity.getFechaPublicacion());
+        postDTO.setAnclado(postEntity.isAnclado());
         return postDTO;
     }
 

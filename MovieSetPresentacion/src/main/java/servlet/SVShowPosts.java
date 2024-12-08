@@ -21,18 +21,19 @@ import org.itson.moviesetdtos.PostDTO;
  * @author hisam
  */
 public class SVShowPosts extends HttpServlet {
- private PostFacade postFacade;
+
+    private PostFacade postFacade;
 
     public void init() throws ServletException {
         this.postFacade = new PostFacade();
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
+
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
 
@@ -47,6 +48,28 @@ public class SVShowPosts extends HttpServlet {
             out.flush();
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String postId = request.getParameter("id");
+        boolean anclado = Boolean.parseBoolean(request.getParameter("anclado"));
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
+
+        try {
+            PostDTO updatedPost = postFacade.fijarPost(postId, anclado);
+            out.print(gson.toJson(updatedPost));
+            out.flush();
+        } catch (FindException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            out.print(gson.toJson("Error updating post: " + e.getMessage()));
+            out.flush();
+        }
+    }
+
 }
-
-
