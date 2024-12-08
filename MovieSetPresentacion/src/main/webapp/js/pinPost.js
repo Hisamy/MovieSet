@@ -20,7 +20,6 @@ window.pinPost = function (postId, postElement) {
                         return response.json();
                     })
                     .then(data => {
-                        // Suponiendo que el servidor haya confirmado la fijación, podemos cambiar la UI
                         postElement.classList.add('pinned');
                         Swal.fire(
                                 '¡Fijado!',
