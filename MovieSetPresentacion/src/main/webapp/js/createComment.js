@@ -1,91 +1,90 @@
-function createCommentSection(postElement) {
-  // Create the comment input and button
-  const commentSection = document.createElement('div');
-  commentSection.classList.add('comment-section');
+window.createComment = function (postElement, postId) {
+    // Crear el formulario de comentario si no existe
+    let commentForm = postElement.querySelector('.comment-form');
+    if (!commentForm) {
+        commentForm = document.createElement('div');
+        commentForm.classList.add('comment-form');
+        commentForm.innerHTML = `
+            <textarea class="comment-input" placeholder="Escribe un comentario..."></textarea>
+            <button class="comment-submit">Enviar</button>
+        `;
+        postElement.appendChild(commentForm);
+        // Agregar el evento al botón de enviar
+        const submitButton = commentForm.querySelector('.comment-submit');
+        const textarea = commentForm.querySelector('.comment-input');
+        submitButton.addEventListener('click', () => {
+            const commentText = textarea.value.trim();
+            if (!commentText) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'El comentario no puede estar vacío',
+                    icon: 'error',
+                    confirmButtonColor: '#D9B855',
+                    background: '#1f2b45',
+                    color: '#f6f6f6'
+                });
+                return;
+            }
+            // Deshabilitar el botón mientras se envía
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
 
-  const commentInput = document.createElement('input');
-  commentInput.type = 'text';
-  commentInput.placeholder = 'Write a comment...';
-  commentInput.classList.add('comment-input');
+            // Preparar el cuerpo de la solicitud de manera más explícita
+            const requestBody = JSON.stringify({
+                contenido: commentText,
+                postId: postId.toString()
+            });
 
-  const sendButton = document.createElement('button');
-  sendButton.textContent = 'Send';
-  sendButton.classList.add('comment-send-button');
+            console.log('Sending request body:', requestBody); // Log the request body
 
-  // Append the comment input and button to the comment section
-  commentSection.appendChild(commentInput);
-  commentSection.appendChild(sendButton);
-
-  // Append the comment section to the post element
-  postElement.appendChild(commentSection);
-
-  // Add event listener to the "Send" button
-  sendButton.addEventListener('click', () => {
-    const comment = commentInput.value.trim();
-    if (comment) {
-      // Call a function to save the comment
-      const postId = getPostId(postElement);
-      saveComment(postId, comment);
-      commentInput.value = '';
+            // Enviar el comentario al servidor
+            fetch('../SVCreateComment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: requestBody
+            })
+                    .then(response => {
+                        console.log('Response status:', response.status); // Log response status
+                        if (!response.ok) {
+                            return response.text().then(text => {
+                                throw new Error(text);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Limpiar el textarea
+                        textarea.value = '';
+                        // Mostrar mensaje de éxito
+                        Swal.fire({
+                            title: '¡Éxito!',
+                            text: 'Comentario publicado correctamente',
+                            icon: 'success',
+                            confirmButtonColor: '#D9B855',
+                            background: '#1f2b45',
+                            color: '#f6f6f6'
+                        });
+                        // Recargar los comentarios
+                        window.showComments(postElement, postId);
+                    })
+                    .catch(error => {
+                        console.error('Full error:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'No se pudo publicar el comentario. Por favor, intenta de nuevo.' + error.message,
+                            icon: 'error',
+                            confirmButtonColor: '#D9B855',
+                            background: '#1f2b45',
+                            color: '#f6f6f6'
+                        });
+                    })
+                    .finally(() => {
+                        // Reactivar el botón
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Enviar';
+                    });
+        });
     }
-  });
-}
-
-function saveComment(postId, newComment) {
-  // Enviar el nuevo comentario al servidor
-  fetch(`/comentarios/comment?postId=${postId}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      autor: 'Anonymous', // Reemplaza con el autor real
-      texto: newComment
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Crear un nuevo elemento de comentario y agregarlo a la interfaz de usuario
-    const newCommentElement = createCommentElement({
-      author: 'Anonymous', // Reemplaza con el autor real
-      text: newComment
-    });
-    const commentsContainer = getCommentsContainer(postElement);
-    commentsContainer.appendChild(newCommentElement);
-  })
-  .catch(error => {
-    console.error('Error guardando el comentario:', error);
-  });
-}
-
-function createCommentElement(comment) {
-  const commentElement = document.createElement('div');
-  commentElement.classList.add('comment');
-
-  const authorElement = document.createElement('div');
-  authorElement.classList.add('comment-author');
-  authorElement.textContent = comment.author;
-
-  const textElement = document.createElement('div');
-  textElement.classList.add('comment-text');
-  textElement.textContent = comment.text;
-
-  commentElement.appendChild(authorElement);
-  commentElement.appendChild(textElement);
-
-  return commentElement;
-}
-
-// Funciones de apoyo
-function getPostId(postElement) {
-  // Implementa la lógica para obtener el ID del post
-  // a partir del elemento del post
-  return postElement.dataset.postId;
-}
-
-function getCommentsContainer(postElement) {
-  // Implementa la lógica para obtener el contenedor
-  // de comentarios a partir del elemento del post
-  return postElement.querySelector('.comments-container');
-}
+};

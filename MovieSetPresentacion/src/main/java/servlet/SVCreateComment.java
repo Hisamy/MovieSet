@@ -6,15 +6,19 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import org.itson.moviesetdtos.ComentarioDTO;
 import org.itson.moviesetdtos.UsuarioDTO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import org.itson.mapeomovieset.facade.CommentFacade;
+import org.itson.mapeomovieset.facade.ICommentFacade;
 
 public class SVCreateComment extends HttpServlet {
-    private CommentFacade comentarioFacade;
+
+    private ICommentFacade comentarioFacade;
 
     public void init() throws ServletException {
         this.comentarioFacade = new CommentFacade();
@@ -25,29 +29,60 @@ public class SVCreateComment extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
 
         try {
-            // Obtener el ID del post del que se va a guardar el comentario
-            String postId = request.getParameter("postId");
-
-            // Recibir el nuevo comentario del cliente
+            // Leer el cuerpo de la solicitud y convertirlo en ComentarioDTO
             ComentarioDTO newComment = gson.fromJson(request.getReader(), ComentarioDTO.class);
-            newComment.setPostId(postId);
-            UsuarioDTO autor = new UsuarioDTO();
-            autor.setName("Anonymous");
-            newComment.setAutor(autor); // Reemplaza con el autor real
 
-            // Guardar el comentario en la base de datos
-            comentarioFacade.agregarComentario(newComment, postId);
-            // Devolver una respuesta confirmando que se guardó el comentario
-            out.print(gson.toJson("Comentario guardado"));
+            // Obtener la sesión actual
+            HttpSession session = request.getSession(false);
+            if (session == null) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                out.print(gson.toJson("No se encontró una sesión activa. Inicia sesión nuevamente."));
+                out.flush();
+                return;
+            }
+
+            // Obtener el usuario autenticado de la sesión
+            UsuarioDTO usuario = (UsuarioDTO) session.getAttribute("user");
+            if (usuario == null) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                out.print(gson.toJson("El usuario no está autenticado. Inicia sesión nuevamente."));
+                out.flush();
+                return;
+            }
+
+            // Validar que el postId no sea nulo ni vacío
+            if (newComment.getPostId() == null || newComment.getPostId().isEmpty()) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                out.print(gson.toJson("El ID del post no puede estar vacío."));
+                out.flush();
+                return;
+            }
+
+            // Asignar el usuario al comentario
+            newComment.setAutor(usuario);
+
+            // Guardar el comentario utilizando el facade
+            comentarioFacade.agregarComentario(newComment, newComment.getPostId());
+
+            // Respuesta exitosa
+            out.print(gson.toJson("Comentario guardado correctamente."));
             out.flush();
-        } catch (JsonSyntaxException | IOException e) {
+
+        } catch (JsonSyntaxException e) {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            out.print(gson.toJson("Error en el formato de JSON: " + e.getMessage()));
+            out.flush();
+        } catch (IOException e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            out.print(gson.toJson("Error guardando el comentario: " + e.getMessage()));
+            out.print(gson.toJson("Error al procesar la solicitud: " + e.getMessage()));
+            out.flush();
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            out.print(gson.toJson("Ocurrió un error inesperado: " + e.getMessage()));
             out.flush();
         }
     }

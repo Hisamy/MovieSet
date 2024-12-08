@@ -11,6 +11,8 @@
         <script src="../js/showPosts.js"></script>
         <script src="../js/deletePost.js"></script>
         <script src="../js/pinPost.js"></script>
+        <script src="../js/showComments.js"></script>
+        <script src="../js/createComment.js"></script>
     </head>
     <body>
         <jsp:include page="fragmentos/header.jsp" />

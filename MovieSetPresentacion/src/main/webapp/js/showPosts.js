@@ -10,11 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     return response.json();
                 })
                 .then(posts => {
-                    posts.sort((a, b) => b.anclado - a.anclado);  // Ordena por 'anclado', los true primero
+                    posts.sort((a, b) => b.anclado - a.anclado);
                     const header = postsContainer.querySelector('h2');
                     postsContainer.innerHTML = '';
                     postsContainer.appendChild(header);
-
                     posts.forEach(post => {
                         const postElement = createPostElement(post);
                         postsContainer.appendChild(postElement);
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function createPostElement(post) {
         const postDiv = document.createElement('div');
         postDiv.classList.add('comment');
-        postDiv.setAttribute('data-post-id', post.id); // Guarda el ID del post en un atributo
+        postDiv.setAttribute('data-post-id', post.id);
 
         const headerDiv = document.createElement('div');
         headerDiv.classList.add('comment-header');
@@ -49,27 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="menu-dropdown">
                 <button class="menu-item pin">Pin</button>
                 <button class="menu-item delete">Delete</button>
+                <button class="menu-item comment">Comment</button>
             </div>
         `;
 
-        // Asocia el evento al botón "pin"
+        // Asociar eventos a los botones
         const pinButton = menuDiv.querySelector('.pin');
         pinButton.addEventListener('click', () => {
             const postId = post.id;
             pinPost(postId, postDiv);
         });
 
-        // Asocia el evento al botón "delete"
         const deleteButton = menuDiv.querySelector('.delete');
         deleteButton.addEventListener('click', () => {
             const postId = post.id;
             deletePost(postId, postDiv);
         });
 
+        const commentButton = menuDiv.querySelector('.comment');
+        commentButton.addEventListener('click', () => {
+            // Use the new showComments function from the other JS file
+            window.showComments(postDiv, post.id);
+            
+            // Also create the comment input section
+            window.createComment(postDiv, post.id);
+        });
+
         headerDiv.appendChild(authorDiv);
         headerDiv.appendChild(menuDiv);
 
-        // Content section
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('comment-subtext');
         contentDiv.textContent = post.contenido;

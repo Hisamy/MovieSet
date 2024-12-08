@@ -99,6 +99,7 @@ body {
     overflow: hidden;
     display: none;
     min-width: 120px;
+    z-index: 100;
 }
 
 .comment-menu:hover .menu-dropdown {
@@ -121,6 +122,80 @@ body {
     background-color: rgba(255,255,255,0.05);
 }
 
+/* Nuevos estilos para la sección de comentarios */
+.comments-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.comments-section.hidden {
+    display: none;
+}
+
+.comments-list {
+    margin-bottom: 1rem;
+}
+
+.comment-item {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgba(31, 43, 69, 0.5);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: var(--accent-color);
+    font-size: 14px;
+}
+
+.comment-content {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.add-comment {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.comment-input {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: rgba(31, 43, 69, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 60px;
+    color: var(--text-color);
+    font-family: 'RoundsFont', Arial, sans-serif;
+}
+
+.comment-input::placeholder {
+    color: rgba(246, 246, 246, 0.5);
+}
+
+.submit-comment {
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'RoundsFont', Arial, sans-serif;
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.submit-comment:hover {
+    background-color: #c4a64c;
+}
+
+/* Estilos existentes para make-post y header */
 .make-post {
     background-color: var(--comment-bg);
     border-radius: 12px;
@@ -212,4 +287,3 @@ nav {
     height: 2rem;
     pointer-events: none;
 }
-

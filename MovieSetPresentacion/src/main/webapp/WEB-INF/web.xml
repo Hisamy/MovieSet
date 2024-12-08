@@ -16,6 +16,10 @@
         <servlet-name>SVDeletePost</servlet-name>
         <servlet-class>servlet.SVDeletePost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVCreateComment</servlet-name>
+        <servlet-class>servlet.SVCreateComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVShowPosts</servlet-name>
         <url-pattern>/SVShowPosts</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>SVDeletePost</servlet-name>
         <url-pattern>/SVDeletePost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVCreateComment</servlet-name>
+        <url-pattern>/SVCreateComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
