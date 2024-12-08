@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author 
+ * @author
  */
 public class PostDTO {
 
@@ -25,6 +25,10 @@ public class PostDTO {
     }
 
     public PostDTO(String id) {
+        this.id = id;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 

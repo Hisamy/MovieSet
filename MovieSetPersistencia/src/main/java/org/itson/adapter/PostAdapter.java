@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import org.bson.types.ObjectId;
 import org.itson.entidades.PostEntity;
 import org.itson.moviesetdtos.PostDTO;
 
@@ -19,36 +20,46 @@ import org.itson.moviesetdtos.PostDTO;
  */
 public class PostAdapter {
 
-    UsuarioAdapter usuarioAdapter = new UsuarioAdapter();     
+    UsuarioAdapter usuarioAdapter = new UsuarioAdapter();
 
     public PostAdapter() {
         this.usuarioAdapter = new UsuarioAdapter();
     }
-    
+
     public PostDTO entityToDTO(PostEntity postEntity) {
         PostDTO postDTO = new PostDTO();
+        postDTO.setId(postEntity.getId().toString());
         postDTO.setAutor(usuarioAdapter.usuarioEntityToDTO(postEntity.getAutor()));
         postDTO.setContenido(postEntity.getContenido());
         postDTO.setFechaPublicacion(postEntity.getFechaPublicacion());
         return postDTO;
     }
-    
-    public PostEntity DTOToEntity(PostDTO postDTO){
+
+    public PostEntity DTOToEntity(PostDTO postDTO) {
         try {
-            return new PostEntity(
-                    postDTO.getContenido(),
-                    postDTO.getFechaPublicacion(),        
-                    usuarioAdapter.usuarioDTOToEntity(postDTO.getAutor()));
+            // Crear instancia de PostEntity
+            PostEntity postEntity = new PostEntity();
+
+            // Asignar campos básicos
+            postEntity.setContenido(postDTO.getContenido());
+            postEntity.setFechaPublicacion(postDTO.getFechaPublicacion());
+            postEntity.setAutor(usuarioAdapter.usuarioDTOToEntity(postDTO.getAutor()));
+
+            // Convertir y asignar el ID (si está presente)
+            if (postDTO.getId() != null) {
+                postEntity.setId(new ObjectId(postDTO.getId())); // Convertir String a ObjectId
+            }
+
+            return postEntity;
         } catch (IOException ex) {
             Logger.getLogger(PostAdapter.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }   
-        
+        }
     }
-    
+
     /**
      * Converts a list of PostEntities to a list of PostDTOs
-     * 
+     *
      * @param entities List of entities to convert
      * @return List of converted DTOs
      */
@@ -56,15 +67,15 @@ public class PostAdapter {
         if (entities == null) {
             return new ArrayList<>();
         }
-        
+
         return entities.stream()
-            .map(this::entityToDTO)
-            .collect(Collectors.toList());
+                .map(this::entityToDTO)
+                .collect(Collectors.toList());
     }
 
     /**
      * Converts a list of PostDTOs to a list of PostEntities
-     * 
+     *
      * @param dtos List of DTOs to convert
      * @return List of converted entities
      * @throws IOException if there's an error converting any user
@@ -73,9 +84,9 @@ public class PostAdapter {
         if (dtos == null) {
             return new ArrayList<>();
         }
-        
+
         return dtos.stream()
-            .map(this::DTOToEntity)
-            .collect(Collectors.toList());
+                .map(this::DTOToEntity)
+                .collect(Collectors.toList());
     }
 }

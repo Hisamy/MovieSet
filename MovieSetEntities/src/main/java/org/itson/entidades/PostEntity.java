@@ -7,6 +7,7 @@ package org.itson.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class PostEntity {
 
+    private ObjectId id;
     private String contenido;
     private List<ComentarioEntity> comentarios;
     private Date fechaPublicacion;
@@ -24,12 +26,20 @@ public class PostEntity {
 
     public PostEntity() {
     }
-    
-    public PostEntity(String contenido, Date fechaPublicacion, UsuarioEntity autor) {
+
+    public PostEntity(ObjectId id, String contenido, Date fechaPublicacion, UsuarioEntity autor) {
+        this.id = id;
         this.contenido = contenido;
         this.fechaPublicacion = fechaPublicacion;
         this.autor = autor;
-        this.comentarios = new ArrayList<>();
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getContenido() {

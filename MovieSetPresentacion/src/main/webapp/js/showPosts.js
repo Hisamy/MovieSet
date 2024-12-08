@@ -29,61 +29,59 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    function createPostElement(post) {
-        const postDiv = document.createElement('div');
-        postDiv.classList.add('comment');
+        function createPostElement(post) {
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('comment');
+    postDiv.setAttribute('data-post-id', post.id); // Guarda el ID del post en un atributo
 
-        const headerDiv = document.createElement('div');
-        headerDiv.classList.add('comment-header');
-        
-        const authorDiv = document.createElement('div');
-        authorDiv.classList.add('comment-text');
-        authorDiv.textContent = post.autor ? post.autor.nombreCompleto : 'Anonymous';
+    const headerDiv = document.createElement('div');
+    headerDiv.classList.add('comment-header');
+    
+    const authorDiv = document.createElement('div');
+    authorDiv.classList.add('comment-text');
+    authorDiv.textContent = post.autor ? post.autor.nombreCompleto : 'Anonymous';
 
-        const menuDiv = document.createElement('div');
-        menuDiv.classList.add('comment-menu');
-        menuDiv.innerHTML = `
-            <button class="menu-dots">⋮</button>
-            <div class="menu-dropdown">
-                <button class="menu-item">pin</button>
-                <button class="menu-item">delete</button>
-            </div>
-        `;
+    const menuDiv = document.createElement('div');
+    menuDiv.classList.add('comment-menu');
+    menuDiv.innerHTML = `
+        <button class="menu-dots">⋮</button>
+        <div class="menu-dropdown">
+            <button class="menu-item pin">Pin</button>
+            <button class="menu-item delete">Delete</button>
+        </div>
+    `;
 
-        headerDiv.appendChild(authorDiv);
-        headerDiv.appendChild(menuDiv);
+    // Asocia el evento al botón "delete"
+    const deleteButton = menuDiv.querySelector('.delete');
+    deleteButton.addEventListener('click', () => {
+        const postId = post.id;
+        deletePost(postId, postDiv);
+    });
 
-        // Content section
-        const contentDiv = document.createElement('div');
-        contentDiv.classList.add('comment-subtext');
-        contentDiv.textContent = post.contenido;
+    headerDiv.appendChild(authorDiv);
+    headerDiv.appendChild(menuDiv);
 
-        const starsDiv = document.createElement('div');
-        starsDiv.classList.add('stars');
-        starsDiv.innerHTML = `
-            <img src="../images/yellow-star.png" alt="yellow-star">
-            <img src="../images/yellow-star.png" alt="yellow-star">
-            <img src="../images/yellow-star.png" alt="yellow-star">
-            <img src="../images/yellow-star.png" alt="yellow-star">
-            <img src="../images/white-star.png" alt="white-star">
-        `;
+    // Content section
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('comment-subtext');
+    contentDiv.textContent = post.contenido;
 
-        postDiv.appendChild(headerDiv);
-        postDiv.appendChild(contentDiv);
-        postDiv.appendChild(starsDiv);
-        
-        createCommentSection(postDiv);
+    const starsDiv = document.createElement('div');
+    starsDiv.classList.add('stars');
+    starsDiv.innerHTML = `
+        <img src="../images/yellow-star.png" alt="yellow-star">
+        <img src="../images/yellow-star.png" alt="yellow-star">
+        <img src="../images/yellow-star.png" alt="yellow-star">
+        <img src="../images/yellow-star.png" alt="yellow-star">
+        <img src="../images/white-star.png" alt="white-star">
+    `;
 
-        // Fetch and display the comments (replace this with your actual comments data)
-        const sampleComments = [
-            {author: 'User 1', text: 'Great post!'},
-            {author: 'User 2', text: 'I agree, this is very informative.'},
-            {author: 'User 3', text: 'Interesting perspective!'}
-        ];
-        showComments(postDiv, sampleComments);
-
-        return postDiv;
-    }
+    postDiv.appendChild(headerDiv);
+    postDiv.appendChild(contentDiv);
+    postDiv.appendChild(starsDiv);
+    
+    return postDiv;
+}
 
     fetchPosts();
 
