@@ -5,7 +5,7 @@ It was developed as a final project for the Web Applications course at the Insti
 ## Team Members
 Hisamy Cinco Cota,
 Gael Rafael Castro Molina,
-Asiel Apodaca Monge,
+Asiel Apodaca Monge.
 
 ## Design & Prototype
 You can view the application's design and prototype at the following Figma link:
@@ -23,7 +23,7 @@ You can view the application's design and prototype at the following Figma link:
 
 Hisamy Cinco Cota,
 Gael Rafael Castro Molina,
-Asiel Apodaca Monge,
+Asiel Apodaca Monge.
 
 ## Enlace al diseño/prototipo
 [Enlace lector figma](https://www.figma.com/design/A8iZWvj4F8m6Jh67rAJeag/Blog-peliculas?node-id=0-1&t=gxrRf4910UzYbNM0-1)
